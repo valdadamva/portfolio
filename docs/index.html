@@ -81,9 +81,7 @@ body {
   background: rgba(200,168,107,0.05); padding: 1.5rem; border-radius: 10px;
   border: 1px solid rgba(200,168,107,0.15);
 }
-.skill-category h4 {
-  color: #c8a86b; margin-bottom: 1rem; font-size: 1.1rem;
-}
+.skill-category h4 { color: #c8a86b; margin-bottom: 1rem; font-size: 1.1rem;}
 .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem;}
 .skill-tag {
   background: rgba(200,168,107,0.15); color: #e5e5e5;
@@ -98,6 +96,15 @@ body {
 .formation-item h4 { color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;}
 .formation-meta { color: #c8a86b; font-size: 0.9rem; margin-bottom: 0.8rem;}
 .formation-item p { color: #bbb; line-height: 1.6;}
+.project-links { margin-top: 1rem; display: flex; gap: 0.8rem; flex-wrap: wrap;}
+.project-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem;
+  text-decoration: none; font-weight: 500; transition: all 0.3s;
+  background: rgba(200,168,107,0.12); color: #c8a86b;
+  border: 1px solid rgba(200,168,107,0.3);
+}
+.project-link:hover { background: #c8a86b; color: #222; transform: translateY(-2px);}
 .accordion { margin: 0;}
 .accordion-btn {
   background: linear-gradient(45deg, #232323, #28241d); color: #c8a86b; cursor: pointer;
@@ -111,18 +118,19 @@ body {
   border-radius: 0 0 8px 8px; max-height: 0; overflow: hidden;
   transition: max-height 0.4s cubic-bezier(.21,1.04,.46,1.03), padding 0.3s; margin-bottom: 10px;
 }
-.accordion-panel.open { padding: 0.8rem 1.5rem 1.3rem 1.5rem; max-height: 500px;}
+.accordion-panel.open { padding: 0.8rem 1.5rem 1.3rem 1.5rem; max-height: 600px;}
 @media (max-width:900px) {
-  .container, .content-section {padding:15px;}
-  .profile-card {padding: 1.3rem;}
-  .section {padding: 1.5rem 0;}
-  .main {padding-top: 70px;}
+  .container, .content-section { padding: 15px;}
+  .profile-card { padding: 1.3rem;}
+  .section { padding: 1.5rem 0;}
+  .main { padding-top: 70px;}
   .contact-section { flex-direction: column; gap: 1rem;}
   .skills-grid { grid-template-columns: 1fr;}
 }
 </style>
 </head>
 <body>
+
 <header class="header">
   <nav class="navbar">
     <div class="nav-brand"><h2>Valère Damée</h2></div>
@@ -135,7 +143,10 @@ body {
     </ul>
   </nav>
 </header>
+
 <main class="main">
+
+
   <section id="home" class="section">
     <div class="container">
       <div class="profile-card">
@@ -143,29 +154,30 @@ body {
         <div class="profile-info">
           <h1>Valère Damée</h1>
           <h2>Étudiant Ingénieur Informatique</h2>
-          <p class="profile-description">Étudiant en 2e année à EPITA, passionné d'informatique et d'arts martiaux.<br>Développeur curieux, rigoureux et orienté vers la collaboration.</p>
+          <p class="profile-description">
+            Étudiant en 2e année à EPITA, passionné d'informatique et d'arts martiaux.<br>
+            Développeur curieux, rigoureux et orienté vers la collaboration.
+          </p>
           <div class="contact-section">
-            <a href="mailto:valda.d234@gmail.com" class="btn btn-primary">
-              <i class="fas fa-envelope"></i>Me contacter
-            </a>
-            <div class="social-links">
-              <a href="mailto:valda.d234@gmail.com" title="Email">
-                <i class="fas fa-envelope"></i>
+              <a href="mailto:valda.d234@gmail.com" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Me contacter
               </a>
-              <a href="https://github.com/valdadamva" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </div>
-          </div>
+              <div class="social-links">
+                <a href="https://github.com/valdadamva" target="_blank" title="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube">
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+        </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LANGUES -->
+
   <section id="langues" class="section" style="padding: 2rem 0;">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-language"></i> Langues</h2>
@@ -173,9 +185,9 @@ body {
         <div class="skills-grid">
           <div class="skill-category">
             <div class="skill-tags">
-              <span class="skill-tag">🇷🇺 Russe - Langue maternelle</span>
-              <span class="skill-tag">🇫🇷 Français - Courant</span>
-              <span class="skill-tag">🇬🇧 Anglais - Intermédiaire</span>
+              <span class="skill-tag">🇷🇺 Russe — Langue maternelle</span>
+              <span class="skill-tag">🇫🇷 Français — Courant</span>
+              <span class="skill-tag">🇬🇧 Anglais — Intermédiaire (préparation TOEIC 800+)</span>
             </div>
           </div>
         </div>
@@ -183,39 +195,38 @@ body {
     </div>
   </section>
 
-  <!-- FORMATION -->
+
   <section id="formation" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formation</h2>
       <div class="content-section">
         <div class="formation-item">
-          <h4>EPITA, Paris</h4>
-          <div class="formation-meta">2024-2029 • Diplôme d'ingénieur en informatique (5 ans)</div>
-          <p>Structures de données, Algorithmes, POO, Sécurité réseau, Statistiques appliquées</p>
+          <h4>EPITA — École d'Ingénieurs en Informatique, Paris</h4>
+          <div class="formation-meta">2024 – 2029 • Diplôme d'ingénieur en informatique (5 ans)</div>
+          <p>Structures de données, Algorithmique, Programmation orientée objet, Sécurité réseau, Bases de données, Mathématiques appliquées (algèbre linéaire, analyse, statistiques).</p>
           <div style="margin-top: 0.8rem;">
-            <span class="skill-tag">2ème année - En cours</span>
+            <span class="skill-tag">2ème année — En cours</span>
           </div>
         </div>
         <div class="formation-item">
           <h4>Lycée Colbert, Paris X</h4>
-          <div class="formation-meta">2022-2024 • Terminale générale</div>
-          <p>Spécialités: Mathématiques, NSI, Mathématiques expertes</p>
+          <div class="formation-meta">2022 – 2024 • Terminale générale</div>
+          <p>Spécialités : Mathématiques, NSI (Numérique et Sciences Informatiques), Mathématiques expertes.</p>
         </div>
         <div class="formation-item">
           <h4>Gymnasium n°53, Nijni Novgorod, Russie</h4>
-          <div class="formation-meta">2019-2022</div>
-          <p>Formation internationale en Russie</p>
+          <div class="formation-meta">2019 – 2022</div>
+          <p>Formation internationale en Russie, parcours scientifique.</p>
         </div>
       </div>
       <div class="content-section" style="text-align:center;">
-        <a href="CV_resto.pdf" class="btn btn-primary" download>
+        <a href="CV.pdf" class="btn btn-primary" download>
           <i class="fas fa-file-download"></i> Télécharger le CV (PDF)
         </a>
       </div>
     </div>
   </section>
 
-  <!-- COMPETENCES & PROJETS -->
   <section id="competences" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-code"></i> Compétences & Projets</h2>
@@ -225,90 +236,134 @@ body {
           <h3><i class="fas fa-code"></i> Langages de programmation</h3>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
-            <span class="skill-tag">C#</span>
+            <span class="skill-tag">Rust</span>
             <span class="skill-tag">C</span>
-            <span class="skill-tag">Pascal</span>
-            <span class="skill-tag">ABC</span>
+            <span class="skill-tag">C#</span>
             <span class="skill-tag">OCaml</span>
             <span class="skill-tag">Matlab</span>
+            <span class="skill-tag">Pascal</span>
+            <span class="skill-tag">SQL</span>
           </div>
         </div>
-
         <div class="content-section">
           <h3><i class="fas fa-tools"></i> Outils & Technologies</h3>
           <div class="skill-tags">
+            <span class="skill-tag">Git</span>
             <span class="skill-tag">GitHub</span>
             <span class="skill-tag">GitLab</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Linux</span>
             <span class="skill-tag">Unity</span>
             <span class="skill-tag">Blender</span>
-            <span class="skill-tag">Excel</span>
-            <span class="skill-tag">Git</span>
+            <span class="skill-tag">VS Code</span>
           </div>
         </div>
       </div>
 
       <div class="content-section">
         <h3><i class="fas fa-project-diagram"></i> Projets Significatifs</h3>
-        <div class="formation-item">
-          <h4>Jeu Vidéo Multijoueur</h4>
-          <div class="formation-meta">Projet annuel EPITA • Équipe de 4 développeurs</div>
-          <p>Développement d'un jeu vidéo complet avec fonctionnalités multijoueur, gestion réseau, interface utilisateur et mécaniques de jeu avancées.</p>
-          <div style="margin-top: 1rem;">
-            <span class="skill-tag">Travail d'équipe</span>
-            <span class="skill-tag">Gestion de projet</span>
-            <span class="skill-tag">Développement réseau</span>
+        <div class="accordion">
+
+          <button class="accordion-btn">Jeu vidéo multijoueur — C# / Unity (1ère année EPITA)</button>
+          <div class="accordion-panel">
+            <p>Développement complet d'un jeu vidéo avec fonctionnalités multijoueur en réseau, gestion de la logique de jeu, des interactions entre joueurs et d'une interface utilisateur. Réalisation en équipe de 4 développeurs avec gestion du versioning via Git.</p>
+            <div style="margin-top: 0.8rem;">
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">Unity</span>
+              <span class="skill-tag">Réseau / Multijoueur</span>
+              <span class="skill-tag">Travail en équipe</span>
+              <span class="skill-tag">Git</span>
+            </div>
           </div>
-        </div>
-        <div class="formation-item">
-          <h4>Realite augmente</h4>
-          <div class="formation-meta">Projet bimestriel EPITA • Équipe de 2 développeurs</div>
-          <p>creation d application de realite augmente pour smartphone.</p>
-          <div style="margin-top: 1rem;">
-            <span class="skill-tag">Travail d'équipe</span>
-            <span class="skill-tag">Gestion de proge multiplatforme</span>
-            <span class="skill-tag">Développement aplication </span>
+
+          <button class="accordion-btn">Application de réalité augmentée — Samsung (1ère année EPITA)</button>
+          <div class="accordion-panel">
+            <p>Conception et développement d'une application de réalité augmentée ciblant les appareils Samsung. Intégration d'éléments virtuels dans l'environnement réel, travail sur l'expérience utilisateur et gestion multiplateforme. Projet réalisé en équipe de 2 développeurs.</p>
+            <div style="margin-top: 0.8rem;">
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">Réalité augmentée</span>
+              <span class="skill-tag">Samsung SDK</span>
+              <span class="skill-tag">Développement mobile</span>
+            </div>
           </div>
+
+          <button class="accordion-btn">Reconnaissance de lettres par apprentissage automatique — C (2ème année EPITA)</button>
+          <div class="accordion-panel">
+            <p>Implémentation from scratch d'un réseau de neurones en C pour la reconnaissance de lettres à partir d'images (entrées 32×32). Prétraitement des images, augmentation de données (bruit, rotations), entraînement et évaluation de la précision du modèle.</p>
+            <div style="margin-top: 0.8rem;">
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">Réseau de neurones</span>
+              <span class="skill-tag">Traitement d'images</span>
+            </div>
+          </div>
+
+          <button class="accordion-btn">Application de dessin type "Paint" — Rust (2ème année EPITA)</button>
+          <div class="accordion-panel">
+            <p>Recréation d'une application de dessin type Paint en Rust. Gestion de l'interface graphique, des outils de dessin (crayon, gomme, formes, couleurs) et de la sauvegarde de fichiers image. Mise en pratique de la programmation système et de la gestion mémoire bas niveau.</p>
+            <div style="margin-top: 0.8rem;">
+              <span class="skill-tag">Rust</span>
+              <span class="skill-tag">Programmation système</span>
+              <span class="skill-tag">Interface graphique</span>
+              <span class="skill-tag">Gestion mémoire</span>
+            </div>
+          </div>
+
+          <button class="accordion-btn">Pour boire par virment en ligne — Python (Projet personnel)</button>
+          <div class="accordion-panel">
+            <p>Développement d'un outil Python permettant de générer et lire des QR codes à partir d'URLs, de textes ou de données personnalisées. Manipulation de bibliothèques de traitement d'images, export de fichiers et interface en ligne de commande.</p>
+            <div style="margin-top: 0.8rem;">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Traitement d'images</span>
+              <span class="skill-tag">Automatisation</span>
+              <span class="skill-tag">CLI</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIENCES -->
+
   <section id="exp" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h2>
       <div class="content-section">
         <div class="accordion">
 
-          <button class="accordion-btn">Сasa Trocadero (2025 ete) </button>
+          <button class="accordion-btn">Casa Trocadero — Paris (Été 2025)</button>
           <div class="accordion-panel">
-            <p>A faire</p>
+            <p>Expérience professionnelle à compléter.</p>
           </div>
-          <button class="accordion-btn">Accueil clientèle – Club Canoë-Raid, Dordogne (2022)</button>
+
+          <button class="accordion-btn">Accueil clientèle — Club Canoë-Raid, Dordogne (2022)</button>
           <div class="accordion-panel">
             <p>Accueil et orientation des clients français et internationaux dans un centre nautique en Dordogne. Gestion de la logistique quotidienne, organisation des activités et coordination des réservations. Cette expérience m'a permis de développer mes compétences en service client, communication interculturelle et gestion de situations imprévues dans un environnement dynamique.</p>
           </div>
 
-          <button class="accordion-btn">Restauration du patrimoine – Bretagne (2020-2021)</button>
+              <button class="accordion-btn">Restauration du patrimoine — Bretagne (2020 – 2021)</button>
           <div class="accordion-panel">
             <p>Stage pratique auprès d'un maçon et d'un ébéniste spécialisés dans la restauration d'une demeure du XVIIIe siècle au Gros-Fœil. Participation aux travaux de conservation du patrimoine architectural : maçonnerie traditionnelle, menuiserie d'art, techniques anciennes de restauration. Cette expérience unique m'a enseigné la précision du travail manuel et l'importance de la patience dans la réalisation de projets complexes.</p>
           </div>
 
-          <button class="accordion-btn">Aide aux entraînements d'enfants (2019-2021)</button>
+          <button class="accordion-btn">Aide aux entraînements d'enfants (2019 – 2021)</button>
           <div class="accordion-panel">
             <p>Encadrement et soutien pédagogique de jeunes sportifs lors des entraînements d'arts martiaux. Développement de compétences en transmission de connaissances, patience et autorité bienveillante. Adaptation des méthodes d'enseignement selon l'âge et la personnalité de chaque enfant. Cette expérience a renforcé ma capacité à communiquer clairement et à gérer un groupe avec rigueur.</p>
           </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOFT SKILLS -->
+
   <section id="skills" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-lightbulb"></i> Soft Skills & Compétences</h2>
       <div class="content-section">
         <div class="accordion">
+
           <button class="accordion-btn">Résistance au stress et performance sous pression</button>
           <div class="accordion-panel">
             <p>5 années d'arts martiaux (judo, MMA, muay-thaï) et participation à des compétitions nationales ont forgé une capacité exceptionnelle à gérer la pression. Candidat maître de sport en acrobatie sportive et course d'orientation, j'ai appris à maintenir ma concentration dans des situations à fort enjeu. Cette expérience se transpose naturellement dans les projets académiques avec des délais serrés.</p>
@@ -326,22 +381,25 @@ body {
 
           <button class="accordion-btn">Esprit d'équipe et leadership</button>
           <div class="accordion-panel">
-            <p>Fondateur d'un club d'arts martiaux au lycée, j'ai su mobiliser et encadrer des groupes. Mon expérience d'aide aux entraînements d'enfants (2019-2021) a renforcé mes compétences en pédagogie et autorité bienveillante. Dans le cadre du projet de jeu vidéo multijoueur à EPITA (équipe de 4 développeurs), j'ai démontré ma capacité à collaborer efficacement.</p>
+            <p>Fondateur d'un club d'arts martiaux au lycée, j'ai su mobiliser et encadrer des groupes. Mon expérience d'aide aux entraînements d'enfants (2019–2021) a renforcé mes compétences en pédagogie et autorité bienveillante. Dans le cadre du projet de jeu vidéo multijoueur à EPITA (équipe de 4 développeurs), j'ai démontré ma capacité à collaborer efficacement sur un projet technique complexe.</p>
           </div>
 
           <button class="accordion-btn">Créativité et résolution de problèmes</button>
           <div class="accordion-panel">
-            <p>Mon parcours biculturel m'a offert une perspective unique pour aborder les problèmes sous différents angles. Que ce soit dans le développement de projets informatiques (Python, C#, Unity) ou dans la restauration du patrimoine, j'adopte une approche créative et non conventionnelle. Cette capacité me permet de trouver des solutions innovantes.</p>
+            <p>Mon parcours biculturel m'a offert une perspective unique pour aborder les problèmes sous différents angles. Que ce soit dans le développement de projets informatiques (Python, C, Rust, C#) ou dans la restauration du patrimoine, j'adopte une approche créative et non conventionnelle. Cette capacité me permet de trouver des solutions innovantes face à des problèmes techniques complexes.</p>
           </div>
+
         </div>
       </div>
     </div>
   </section>
+
 </main>
+
 <script>
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', function(){
-    document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     this.classList.add('active');
   });
 });
@@ -349,12 +407,13 @@ document.querySelectorAll('.accordion-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     let panel = this.nextElementSibling;
     let isActive = panel.classList.contains('open');
-    document.querySelectorAll('.accordion-panel').forEach(p=>{
-      p.classList.remove('open'); p.style.maxHeight=null;
+    document.querySelectorAll('.accordion-panel').forEach(p => {
+      p.classList.remove('open'); p.style.maxHeight = null;
     });
-    document.querySelectorAll('.accordion-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.accordion-btn').forEach(b => b.classList.remove('active'));
     if (!isActive) {
-      this.classList.add('active'); panel.classList.add('open');
+      this.classList.add('active');
+      panel.classList.add('open');
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
