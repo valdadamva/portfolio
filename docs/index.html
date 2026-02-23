@@ -58,6 +58,7 @@ body {
 .btn {
   padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 500;
   transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;
+  border: none; cursor: pointer; font-family: 'Segoe UI', sans-serif; font-size: 1rem;
 }
 .btn-primary { background: linear-gradient(45deg, #c8a86b, #a58955); color: #fff;}
 .btn-primary:hover { box-shadow: 0 8px 25px rgba(200,168,107,0.3); transform: translateY(-2px);}
@@ -119,6 +120,58 @@ body {
   transition: max-height 0.4s cubic-bezier(.21,1.04,.46,1.03), padding 0.3s; margin-bottom: 10px;
 }
 .accordion-panel.open { padding: 0.8rem 1.5rem 1.3rem 1.5rem; max-height: 600px;}
+
+/* Contact dropdown */
+.contact-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+}
+.contact-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: rgba(25, 25, 25, 0.97);
+  border: 1px solid rgba(200,168,107,0.35);
+  border-radius: 14px;
+  padding: 0.8rem 1.2rem;
+  min-width: 240px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.contact-panel.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #e5e5e5;
+  text-decoration: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.95rem;
+}
+.contact-item i {
+  color: #c8a86b;
+  width: 16px;
+  text-align: center;
+}
+.contact-item:hover {
+  background: rgba(200,168,107,0.15);
+  color: #c8a86b;
+}
+
 @media (max-width:900px) {
   .container, .content-section { padding: 15px;}
   .profile-card { padding: 1.3rem;}
@@ -126,6 +179,7 @@ body {
   .main { padding-top: 70px;}
   .contact-section { flex-direction: column; gap: 1rem;}
   .skills-grid { grid-template-columns: 1fr;}
+  .contact-panel { min-width: 200px;}
 }
 </style>
 </head>
@@ -146,7 +200,6 @@ body {
 
 <main class="main">
 
-
   <section id="home" class="section">
     <div class="container">
       <div class="profile-card">
@@ -159,24 +212,35 @@ body {
             Développeur curieux, rigoureux et orienté vers la collaboration.
           </p>
           <div class="contact-section">
-              <a href="mailto:valda.d234@gmail.com" class="btn btn-primary">
+
+            <div class="contact-dropdown-wrap">
+              <button class="btn btn-primary contact-toggle-btn" id="contactToggleBtn">
                 <i class="fas fa-envelope"></i> Me contacter
-              </a>
-              <div class="social-links">
-                <a href="https://github.com/valdadamva" target="_blank" title="GitHub">
-                  <i class="fab fa-github"></i>
+              </button>
+              <div class="contact-panel" id="contactPanel">
+                  <i class="fas fa-envelope"></i>
+                  <span>valda.d234@gmail.com</span>
                 </a>
-                <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube">
-                  <i class="fab fa-youtube"></i>
+                  <i class="fas fa-phone"></i>
+                  <span>+33 6 41 91 86 42</span>
                 </a>
               </div>
-        </div>
+            </div>
 
+            <div class="social-links">
+              <a href="https://github.com/valdadamva" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </section>
-
 
   <section id="langues" class="section" style="padding: 2rem 0;">
     <div class="container">
@@ -194,7 +258,6 @@ body {
       </div>
     </div>
   </section>
-
 
   <section id="formation" class="section">
     <div class="container">
@@ -220,7 +283,7 @@ body {
         </div>
       </div>
       <div class="content-section" style="text-align:center;">
-        <a href="CV.pdf" class="btn btn-primary" download>
+        <a href="Cv.pdf" class="btn btn-primary" download>
           <i class="fas fa-file-download"></i> Télécharger le CV (PDF)
         </a>
       </div>
@@ -230,7 +293,6 @@ body {
   <section id="competences" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-code"></i> Compétences & Projets</h2>
-
       <div class="skills-grid">
         <div class="content-section">
           <h3><i class="fas fa-code"></i> Langages de programmation</h3>
@@ -276,7 +338,7 @@ body {
             </div>
           </div>
 
-          <button class="accordion-btn">Application de réalité augmentée — Samsung (1ère année EPITA)</button>
+          <button class="accordion-btn">Application de réalité augmentée — C# (1ère année EPITA)</button>
           <div class="accordion-panel">
             <p>Conception et développement d'une application de réalité augmentée ciblant les appareils Samsung. Intégration d'éléments virtuels dans l'environnement réel, travail sur l'expérience utilisateur et gestion multiplateforme. Projet réalisé en équipe de 2 développeurs.</p>
             <div style="margin-top: 0.8rem;">
@@ -309,7 +371,7 @@ body {
             </div>
           </div>
 
-          <button class="accordion-btn">Pour boire par virment en ligne — Python (Projet personnel)</button>
+          <button class="accordion-btn">Pour boire par virement en ligne — Python (Projet personnel)</button>
           <div class="accordion-panel">
             <p>Développement d'un outil Python permettant de générer et lire des QR codes à partir d'URLs, de textes ou de données personnalisées. Manipulation de bibliothèques de traitement d'images, export de fichiers et interface en ligne de commande.</p>
             <div style="margin-top: 0.8rem;">
@@ -325,24 +387,39 @@ body {
     </div>
   </section>
 
-
   <section id="exp" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h2>
       <div class="content-section">
         <div class="accordion">
 
-          <button class="accordion-btn">Casa Trocadero — Paris (Été 2025)</button>
-          <div class="accordion-panel">
-            <p>Expérience professionnelle à compléter.</p>
-          </div>
+          <button class="accordion-btn">Casa Trocadéro — Paris (Été 2025)</button>
+            <div class="accordion-panel">
+              <p>
+                Expérience polyvalente au sein d'un établissement événementiel parisien à fort volume,
+                travaillant jusqu'à 14 heures par shift dans un environnement exigeant (musique forte,
+                clientèle internationale et diversifiée). Missions principales :
+              </p>
+              <ul style="color:#ccc; margin-top:0.8rem; padding-left:1.2rem; line-height:2;">
+                <li>Service en salle et débarrassage — gestion du flux en terrasse lors d'événements privés</li>
+                <li>Approvisionnement du bar — transport et organisation de grandes quantités de boissons et verrerie</li>
+                <li>Participation au service bar — préparation de cocktails et boissons</li>
+                <li>Tenue d'un stand de confiseries (gaufres, crêpes, barbe à papa) avec encaissement en caisse</li>
+                <li>Fermeture de service — rangement de la terrasse, inventaire des boissons, vérification des écarts de caisse, remise de caisse</li>
+              </ul>
+              <p style="margin-top:0.8rem;">
+                Travail régulier en horaires de nuit (jusqu'à 4h–5h du matin lors d'événements privatisés).
+                Développement de la résistance au stress, de la réactivité et de la communication
+                interculturelle face à une clientèle internationale ne parlant pas toujours français ni anglais.
+              </p>
+            </div>
 
           <button class="accordion-btn">Accueil clientèle — Club Canoë-Raid, Dordogne (2022)</button>
           <div class="accordion-panel">
             <p>Accueil et orientation des clients français et internationaux dans un centre nautique en Dordogne. Gestion de la logistique quotidienne, organisation des activités et coordination des réservations. Cette expérience m'a permis de développer mes compétences en service client, communication interculturelle et gestion de situations imprévues dans un environnement dynamique.</p>
           </div>
 
-              <button class="accordion-btn">Restauration du patrimoine — Bretagne (2020 – 2021)</button>
+          <button class="accordion-btn">Restauration du patrimoine — Bretagne (2020 – 2021)</button>
           <div class="accordion-panel">
             <p>Stage pratique auprès d'un maçon et d'un ébéniste spécialisés dans la restauration d'une demeure du XVIIIe siècle au Gros-Fœil. Participation aux travaux de conservation du patrimoine architectural : maçonnerie traditionnelle, menuiserie d'art, techniques anciennes de restauration. Cette expérience unique m'a enseigné la précision du travail manuel et l'importance de la patience dans la réalisation de projets complexes.</p>
           </div>
@@ -356,7 +433,6 @@ body {
       </div>
     </div>
   </section>
-
 
   <section id="skills" class="section">
     <div class="container">
@@ -403,6 +479,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     this.classList.add('active');
   });
 });
+
 document.querySelectorAll('.accordion-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     let panel = this.nextElementSibling;
@@ -417,6 +494,18 @@ document.querySelectorAll('.accordion-btn').forEach(btn => {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
+});
+
+const contactBtn = document.getElementById('contactToggleBtn');
+const contactPanel = document.getElementById('contactPanel');
+contactBtn.addEventListener('click', function(e) {
+  e.stopPropagation();
+  contactPanel.classList.toggle('open');
+});
+document.addEventListener('click', function(e) {
+  if (!contactBtn.contains(e.target) && !contactPanel.contains(e.target)) {
+    contactPanel.classList.remove('open');
+  }
 });
 </script>
 </body>
