@@ -106,71 +106,63 @@ body {
   border: 1px solid rgba(200,168,107,0.3);
 }
 .project-link:hover { background: #c8a86b; color: #222; transform: translateY(-2px);}
-.accordion { margin: 0;}
-.accordion-btn {
-  background: linear-gradient(45deg, #232323, #28241d); color: #c8a86b; cursor: pointer;
-  padding: 1rem 1.5rem; width: 100%; text-align: left; outline: none; font-size: 1.1rem;
-  border: none; border-radius: 8px; margin-bottom: 8px; font-weight: 600;
-  transition: background 0.3s, color 0.3s; box-shadow: 0 1px 5px rgba(200,168,107,0.06);
-}
-.accordion-btn.active, .accordion-btn:hover { background: #c8a86b; color: #222;}
-.accordion-panel {
-  padding: 0 1.5rem; background: rgba(200,168,107,0.09); color: #eee;
-  border-radius: 0 0 8px 8px; max-height: 0; overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(.21,1.04,.46,1.03), padding 0.3s; margin-bottom: 10px;
-}
-.accordion-panel.open { padding: 0.8rem 1.5rem 1.3rem 1.5rem; max-height: 600px;}
 
 /* Contact dropdown */
-.contact-dropdown-wrap {
-  position: relative;
-  display: inline-block;
-}
+.contact-dropdown-wrap { position: relative; display: inline-block; }
 .contact-panel {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
+  position: absolute; top: calc(100% + 10px); left: 50%;
   transform: translateX(-50%) translateY(-8px);
-  background: rgba(25, 25, 25, 0.97);
-  border: 1px solid rgba(200,168,107,0.35);
-  border-radius: 14px;
-  padding: 0.8rem 1.2rem;
-  min-width: 240px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  backdrop-filter: blur(12px);
-  opacity: 0;
-  pointer-events: none;
+  background: rgba(25,25,25,0.97); border: 1px solid rgba(200,168,107,0.35);
+  border-radius: 14px; padding: 0.8rem 1.2rem; min-width: 240px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(12px);
+  opacity: 0; pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  z-index: 100; display: flex; flex-direction: column; gap: 0.6rem;
 }
-.contact-panel.open {
-  opacity: 1;
-  pointer-events: all;
-  transform: translateX(-50%) translateY(0);
-}
+.contact-panel.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
 .contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: #e5e5e5;
-  text-decoration: none;
-  padding: 0.5rem 0.7rem;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
-  font-size: 0.95rem;
+  display: flex; align-items: center; gap: 0.7rem; color: #e5e5e5;
+  text-decoration: none; padding: 0.5rem 0.7rem; border-radius: 8px;
+  transition: background 0.2s, color 0.2s; font-size: 0.95rem;
 }
-.contact-item i {
-  color: #c8a86b;
-  width: 16px;
-  text-align: center;
+.contact-item i { color: #c8a86b; width: 16px; text-align: center; }
+.contact-item:hover { background: rgba(200,168,107,0.15); color: #c8a86b; }
+
+/* ===================== CAROUSEL ===================== */
+.projects-carousel-wrap {
+  position: relative; display: flex; align-items: center; gap: 0; overflow: hidden;
 }
-.contact-item:hover {
-  background: rgba(200,168,107,0.15);
-  color: #c8a86b;
+.carousel-btn {
+  flex-shrink: 0; width: 48px; height: 48px;
+  background: rgba(200,168,107,0.12); border: 2px solid rgba(200,168,107,0.35);
+  color: #c8a86b; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.25s, color 0.25s, transform 0.2s; z-index: 2; position: relative;
 }
+.carousel-btn:hover { background: #c8a86b; color: #222; transform: scale(1.1); }
+.carousel-viewport { flex: 1; overflow: hidden; }
+.carousel-track {
+  display: flex; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform;
+}
+.project-slide { min-width: 100%; box-sizing: border-box; padding: 0 1.5rem; }
+.project-card {
+  background: rgba(200,168,107,0.06); border: 1px solid rgba(200,168,107,0.2);
+  border-radius: 14px; padding: 2rem 2rem 1.5rem; position: relative;
+}
+.project-card .project-counter {
+  position: absolute; top: 1rem; right: 1.2rem; font-size: 0.8rem;
+  color: rgba(200,168,107,0.5); font-weight: 600; letter-spacing: 1px;
+}
+.project-card h4 { color: #fff; font-size: 1.2rem; margin: 0 0 0.8rem 0; padding-right: 3rem; }
+.project-card p { color: #bbb; line-height: 1.7; margin: 0 0 1rem 0; }
+.project-card ul { color: #bbb; padding-left: 1.2rem; line-height: 1.9; margin: 0.5rem 0 1rem 0; }
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 1.2rem; }
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: rgba(200,168,107,0.25);
+  border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; padding: 0;
+}
+.carousel-dot.active { background: #c8a86b; transform: scale(1.3); }
+/* ==================== END CAROUSEL ==================== */
 
 @media (max-width:900px) {
   .container, .content-section { padding: 15px;}
@@ -180,6 +172,8 @@ body {
   .contact-section { flex-direction: column; gap: 1rem;}
   .skills-grid { grid-template-columns: 1fr;}
   .contact-panel { min-width: 200px;}
+  .carousel-btn { width: 38px; height: 38px; font-size: 1rem; }
+  .project-slide { padding: 0 0.5rem; }
 }
 </style>
 </head>
@@ -212,30 +206,23 @@ body {
             Développeur curieux, rigoureux et orienté vers la collaboration.
           </p>
           <div class="contact-section">
-
             <div class="contact-dropdown-wrap">
               <button class="btn btn-primary contact-toggle-btn" id="contactToggleBtn">
                 <i class="fas fa-envelope"></i> Me contacter
               </button>
               <div class="contact-panel" id="contactPanel">
-                  <i class="fas fa-envelope"></i>
-                  <span>valda.d234@gmail.com</span>
+                <a class="contact-item" href="mailto:valda.d234@gmail.com">
+                  <i class="fas fa-envelope"></i><span>valda.d234@gmail.com</span>
                 </a>
-                  <i class="fas fa-phone"></i>
-                  <span>+33 6 41 91 86 42</span>
+                <a class="contact-item" href="tel:+33641918642">
+                  <i class="fas fa-phone"></i><span>+33 6 41 91 86 42</span>
                 </a>
               </div>
             </div>
-
             <div class="social-links">
-              <a href="https://github.com/valdadamva" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube">
-                <i class="fab fa-youtube"></i>
-              </a>
+              <a href="https://github.com/valdadamva" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
-
           </div>
         </div>
       </div>
@@ -267,9 +254,7 @@ body {
           <h4>EPITA — École d'Ingénieurs en Informatique, Paris</h4>
           <div class="formation-meta">2024 – 2029 • Diplôme d'ingénieur en informatique (5 ans)</div>
           <p>Structures de données, Algorithmique, Programmation orientée objet, Sécurité réseau, Bases de données, Mathématiques appliquées (algèbre linéaire, analyse, statistiques).</p>
-          <div style="margin-top: 0.8rem;">
-            <span class="skill-tag">2ème année — En cours</span>
-          </div>
+          <div style="margin-top: 0.8rem;"><span class="skill-tag">2ème année — En cours</span></div>
         </div>
         <div class="formation-item">
           <h4>Lycée Colbert, Paris X</h4>
@@ -292,187 +277,248 @@ body {
 
   <section id="competences" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-code"></i> Compétences & Projets</h2>
+      <h2 class="section-title"><i class="fas fa-code"></i> Compétences &amp; Projets</h2>
       <div class="skills-grid">
         <div class="content-section">
           <h3><i class="fas fa-code"></i> Langages de programmation</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Rust</span>
-            <span class="skill-tag">C</span>
-            <span class="skill-tag">C#</span>
-            <span class="skill-tag">OCaml</span>
-            <span class="skill-tag">Matlab</span>
-            <span class="skill-tag">Pascal</span>
-            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Python</span><span class="skill-tag">Rust</span>
+            <span class="skill-tag">C</span><span class="skill-tag">C#</span>
+            <span class="skill-tag">OCaml</span><span class="skill-tag">Matlab</span>
+            <span class="skill-tag">Pascal</span><span class="skill-tag">SQL</span>
           </div>
         </div>
         <div class="content-section">
-          <h3><i class="fas fa-tools"></i> Outils & Technologies</h3>
+          <h3><i class="fas fa-tools"></i> Outils &amp; Technologies</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Git</span>
-            <span class="skill-tag">GitHub</span>
-            <span class="skill-tag">GitLab</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">Unity</span>
-            <span class="skill-tag">Blender</span>
-            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
+            <span class="skill-tag">GitLab</span><span class="skill-tag">Docker</span>
+            <span class="skill-tag">Linux</span><span class="skill-tag">Unity</span>
+            <span class="skill-tag">Blender</span><span class="skill-tag">VS Code</span>
           </div>
         </div>
       </div>
 
+      <!-- CAROUSEL PROJETS -->
       <div class="content-section">
         <h3><i class="fas fa-project-diagram"></i> Projets Significatifs</h3>
-        <div class="accordion">
+        <div class="projects-carousel-wrap">
+          <button class="carousel-btn" id="prevBtn" aria-label="Projet précédent"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
 
-          <button class="accordion-btn">Jeu vidéo multijoueur — C# / Unity (1ère année EPITA)</button>
-          <div class="accordion-panel">
-            <p>Développement complet d'un jeu vidéo avec fonctionnalités multijoueur en réseau, gestion de la logique de jeu, des interactions entre joueurs et d'une interface utilisateur. Réalisation en équipe de 4 développeurs avec gestion du versioning via Git.</p>
-            <div style="margin-top: 0.8rem;">
-              <span class="skill-tag">C#</span>
-              <span class="skill-tag">Unity</span>
-              <span class="skill-tag">Réseau / Multijoueur</span>
-              <span class="skill-tag">Travail en équipe</span>
-              <span class="skill-tag">Git</span>
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">1 / 5</span>
+                <h4>🎮 Jeu vidéo multijoueur — C# / Unity</h4>
+                <p>Développement complet d'un jeu vidéo avec fonctionnalités multijoueur en réseau, gestion de la logique de jeu, des interactions entre joueurs et d'une interface utilisateur. Réalisation en équipe de 4 développeurs avec gestion du versioning via Git.</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">C#</span><span class="skill-tag">Unity</span>
+                  <span class="skill-tag">Réseau / Multijoueur</span><span class="skill-tag">Travail en équipe</span><span class="skill-tag">Git</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">2 / 5</span>
+                <h4>📱 Application de réalité augmentée — C#</h4>
+                <p>Conception et développement d'une application de réalité augmentée ciblant les appareils Samsung. Intégration d'éléments virtuels dans l'environnement réel, travail sur l'expérience utilisateur et gestion multiplateforme. Projet réalisé en équipe de 2 développeurs.</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">C#</span><span class="skill-tag">Réalité augmentée</span>
+                  <span class="skill-tag">Samsung SDK</span><span class="skill-tag">Développement mobile</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">3 / 5</span>
+                <h4>🧠 Reconnaissance de lettres par ML — C</h4>
+                <p>Implémentation from scratch d'un réseau de neurones en C pour la reconnaissance de lettres à partir d'images (entrées 32×32). Prétraitement des images, augmentation de données (bruit, rotations), entraînement et évaluation de la précision du modèle.</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">C</span><span class="skill-tag">Machine Learning</span>
+                  <span class="skill-tag">Réseau de neurones</span><span class="skill-tag">Traitement d'images</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">4 / 5</span>
+                <h4>🎨 Application de dessin type "Paint" — Rust</h4>
+                <p>Recréation d'une application de dessin type Paint en Rust. Gestion de l'interface graphique, des outils de dessin (crayon, gomme, formes, couleurs) et de la sauvegarde de fichiers image. Mise en pratique de la programmation système et de la gestion mémoire bas niveau.</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Rust</span><span class="skill-tag">Programmation système</span>
+                  <span class="skill-tag">Interface graphique</span><span class="skill-tag">Gestion mémoire</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">5 / 5</span>
+                <h4>🔗 Générateur de QR Codes — Python</h4>
+                <p>Développement d'un outil Python permettant de générer et lire des QR codes à partir d'URLs, de textes ou de données personnalisées. Manipulation de bibliothèques de traitement d'images, export de fichiers et interface en ligne de commande.</p>
+                <div class="skill-tags">
+                  <span class="skill-tag">Python</span><span class="skill-tag">Traitement d'images</span>
+                  <span class="skill-tag">Automatisation</span><span class="skill-tag">CLI</span>
+                </div>
+              </div></div>
+
             </div>
           </div>
-
-          <button class="accordion-btn">Application de réalité augmentée — C# (1ère année EPITA)</button>
-          <div class="accordion-panel">
-            <p>Conception et développement d'une application de réalité augmentée ciblant les appareils Samsung. Intégration d'éléments virtuels dans l'environnement réel, travail sur l'expérience utilisateur et gestion multiplateforme. Projet réalisé en équipe de 2 développeurs.</p>
-            <div style="margin-top: 0.8rem;">
-              <span class="skill-tag">C#</span>
-              <span class="skill-tag">Réalité augmentée</span>
-              <span class="skill-tag">Samsung SDK</span>
-              <span class="skill-tag">Développement mobile</span>
-            </div>
-          </div>
-
-          <button class="accordion-btn">Reconnaissance de lettres par apprentissage automatique — C (2ème année EPITA)</button>
-          <div class="accordion-panel">
-            <p>Implémentation from scratch d'un réseau de neurones en C pour la reconnaissance de lettres à partir d'images (entrées 32×32). Prétraitement des images, augmentation de données (bruit, rotations), entraînement et évaluation de la précision du modèle.</p>
-            <div style="margin-top: 0.8rem;">
-              <span class="skill-tag">C</span>
-              <span class="skill-tag">Machine Learning</span>
-              <span class="skill-tag">Réseau de neurones</span>
-              <span class="skill-tag">Traitement d'images</span>
-            </div>
-          </div>
-
-          <button class="accordion-btn">Application de dessin type "Paint" — Rust (2ème année EPITA)</button>
-          <div class="accordion-panel">
-            <p>Recréation d'une application de dessin type Paint en Rust. Gestion de l'interface graphique, des outils de dessin (crayon, gomme, formes, couleurs) et de la sauvegarde de fichiers image. Mise en pratique de la programmation système et de la gestion mémoire bas niveau.</p>
-            <div style="margin-top: 0.8rem;">
-              <span class="skill-tag">Rust</span>
-              <span class="skill-tag">Programmation système</span>
-              <span class="skill-tag">Interface graphique</span>
-              <span class="skill-tag">Gestion mémoire</span>
-            </div>
-          </div>
-
-          <button class="accordion-btn">Pour boire par virement en ligne — Python (Projet personnel)</button>
-          <div class="accordion-panel">
-            <p>Développement d'un outil Python permettant de générer et lire des QR codes à partir d'URLs, de textes ou de données personnalisées. Manipulation de bibliothèques de traitement d'images, export de fichiers et interface en ligne de commande.</p>
-            <div style="margin-top: 0.8rem;">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">Traitement d'images</span>
-              <span class="skill-tag">Automatisation</span>
-              <span class="skill-tag">CLI</span>
-            </div>
-          </div>
-
+          <button class="carousel-btn" id="nextBtn" aria-label="Projet suivant"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-dots" id="carouselDots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+          <button class="carousel-dot" data-index="3"></button>
+          <button class="carousel-dot" data-index="4"></button>
         </div>
       </div>
+      <!-- END CAROUSEL PROJETS -->
+
     </div>
   </section>
 
+  <!-- ============ SECTION EXP — CAROUSEL ============ -->
   <section id="exp" class="section">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h2>
       <div class="content-section">
-        <div class="accordion">
+        <div class="projects-carousel-wrap">
+          <button class="carousel-btn" id="expPrevBtn" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="expTrack">
 
-          <button class="accordion-btn">Casa Trocadéro — Paris (Été 2025)</button>
-            <div class="accordion-panel">
-              <p>
-                Expérience polyvalente au sein d'un établissement événementiel parisien à fort volume,
-                travaillant jusqu'à 14 heures par shift dans un environnement exigeant (musique forte,
-                clientèle internationale et diversifiée). Missions principales :
-              </p>
-              <ul style="color:#ccc; margin-top:0.8rem; padding-left:1.2rem; line-height:2;">
-                <li>Service en salle et débarrassage — gestion du flux en terrasse lors d'événements privés</li>
-                <li>Approvisionnement du bar — transport et organisation de grandes quantités de boissons et verrerie</li>
-                <li>Participation au service bar — préparation de cocktails et boissons</li>
-                <li>Tenue d'un stand de confiseries (gaufres, crêpes, barbe à papa) avec encaissement en caisse</li>
-                <li>Fermeture de service — rangement de la terrasse, inventaire des boissons, vérification des écarts de caisse, remise de caisse</li>
-              </ul>
-              <p style="margin-top:0.8rem;">
-                Travail régulier en horaires de nuit (jusqu'à 4h–5h du matin lors d'événements privatisés).
-                Développement de la résistance au stress, de la réactivité et de la communication
-                interculturelle face à une clientèle internationale ne parlant pas toujours français ni anglais.
-              </p>
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">1 / 4</span>
+                <h4>🎉 Casa Trocadéro — Paris (Été 2025)</h4>
+                <p>Expérience polyvalente au sein d'un établissement événementiel parisien à fort volume, travaillant jusqu'à 14 heures par shift dans un environnement exigeant (musique forte, clientèle internationale). Missions principales :</p>
+                <ul>
+                  <li>Service en salle et débarrassage lors d'événements privés</li>
+                  <li>Approvisionnement du bar — préparation de cocktails et boissons</li>
+                  <li>Stand de confiseries (gaufres, crêpes, barbe à papa) avec encaissement</li>
+                  <li>Fermeture de service — inventaire, vérification des écarts de caisse</li>
+                </ul>
+                <p>Travail régulier de nuit (4h–5h du matin). Résistance au stress et communication interculturelle.</p>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">2 / 4</span>
+                <h4>🛶 Accueil clientèle — Club Canoë-Raid, Dordogne (2022)</h4>
+                <p>Accueil et orientation des clients français et internationaux dans un centre nautique en Dordogne. Gestion de la logistique quotidienne, organisation des activités et coordination des réservations.</p>
+                <p>Cette expérience m'a permis de développer mes compétences en service client, communication interculturelle et gestion de situations imprévues dans un environnement dynamique.</p>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">3 / 4</span>
+                <h4>🏛️ Restauration du patrimoine — Bretagne (2020–2021)</h4>
+                <p>Stage pratique auprès d'un maçon et d'un ébéniste spécialisés dans la restauration d'une demeure du XVIIIe siècle au Gros-Fœil. Participation aux travaux de conservation : maçonnerie traditionnelle, menuiserie d'art, techniques anciennes de restauration.</p>
+                <p>Cette expérience unique m'a enseigné la précision du travail manuel et l'importance de la patience dans la réalisation de projets complexes.</p>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">4 / 4</span>
+                <h4>🥋 Aide aux entraînements d'enfants (2019–2021)</h4>
+                <p>Encadrement et soutien pédagogique de jeunes sportifs lors des entraînements d'arts martiaux. Développement de compétences en transmission de connaissances, patience et autorité bienveillante.</p>
+                <p>Adaptation des méthodes d'enseignement selon l'âge et la personnalité de chaque enfant. Renforcement de la capacité à communiquer clairement et à gérer un groupe avec rigueur.</p>
+              </div></div>
+
             </div>
-
-          <button class="accordion-btn">Accueil clientèle — Club Canoë-Raid, Dordogne (2022)</button>
-          <div class="accordion-panel">
-            <p>Accueil et orientation des clients français et internationaux dans un centre nautique en Dordogne. Gestion de la logistique quotidienne, organisation des activités et coordination des réservations. Cette expérience m'a permis de développer mes compétences en service client, communication interculturelle et gestion de situations imprévues dans un environnement dynamique.</p>
           </div>
-
-          <button class="accordion-btn">Restauration du patrimoine — Bretagne (2020 – 2021)</button>
-          <div class="accordion-panel">
-            <p>Stage pratique auprès d'un maçon et d'un ébéniste spécialisés dans la restauration d'une demeure du XVIIIe siècle au Gros-Fœil. Participation aux travaux de conservation du patrimoine architectural : maçonnerie traditionnelle, menuiserie d'art, techniques anciennes de restauration. Cette expérience unique m'a enseigné la précision du travail manuel et l'importance de la patience dans la réalisation de projets complexes.</p>
-          </div>
-
-          <button class="accordion-btn">Aide aux entraînements d'enfants (2019 – 2021)</button>
-          <div class="accordion-panel">
-            <p>Encadrement et soutien pédagogique de jeunes sportifs lors des entraînements d'arts martiaux. Développement de compétences en transmission de connaissances, patience et autorité bienveillante. Adaptation des méthodes d'enseignement selon l'âge et la personnalité de chaque enfant. Cette expérience a renforcé ma capacité à communiquer clairement et à gérer un groupe avec rigueur.</p>
-          </div>
-
+          <button class="carousel-btn" id="expNextBtn" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-dots" id="expDots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+          <button class="carousel-dot" data-index="3"></button>
         </div>
       </div>
     </div>
   </section>
+  <!-- ============ END EXP ============ -->
 
+  <!-- ============ SECTION SKILLS — CAROUSEL ============ -->
   <section id="skills" class="section">
     <div class="container">
-      <h2 class="section-title"><i class="fas fa-lightbulb"></i> Soft Skills & Compétences</h2>
+      <h2 class="section-title"><i class="fas fa-lightbulb"></i> Soft Skills &amp; Compétences</h2>
       <div class="content-section">
-        <div class="accordion">
+        <div class="projects-carousel-wrap">
+          <button class="carousel-btn" id="skillsPrevBtn" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="skillsTrack">
 
-          <button class="accordion-btn">Résistance au stress et performance sous pression</button>
-          <div class="accordion-panel">
-            <p>5 années d'arts martiaux (judo, MMA, muay-thaï) et participation à des compétitions nationales ont forgé une capacité exceptionnelle à gérer la pression. Candidat maître de sport en acrobatie sportive et course d'orientation, j'ai appris à maintenir ma concentration dans des situations à fort enjeu. Cette expérience se transpose naturellement dans les projets académiques avec des délais serrés.</p>
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">1 / 5</span>
+                <h4>💪 Résistance au stress et performance sous pression</h4>
+                <p>5 années d'arts martiaux (judo, MMA, muay-thaï) et participation à des compétitions nationales ont forgé une capacité exceptionnelle à gérer la pression. Candidat maître de sport en acrobatie sportive et course d'orientation, j'ai appris à maintenir ma concentration dans des situations à fort enjeu.</p>
+                <p>Cette expérience se transpose naturellement dans les projets académiques avec des délais serrés.</p>
+                <div class="skill-tags" style="margin-top:0.8rem;">
+                  <span class="skill-tag">Gestion du stress</span>
+                  <span class="skill-tag">Arts martiaux</span>
+                  <span class="skill-tag">Compétitions nationales</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">2 / 5</span>
+                <h4>📐 Discipline et rigueur personnelle</h4>
+                <p>La pratique intensive du sport de haut niveau m'a inculqué une discipline rigoureuse : entraînements réguliers, respect des programmes, gestion stricte de l'alimentation pour les compétitions. Cette même rigueur s'applique à mes études à EPITA et au développement de projets informatiques, où la persévérance et la méthodologie sont essentielles.</p>
+                <div class="skill-tags" style="margin-top:0.8rem;">
+                  <span class="skill-tag">Rigueur</span>
+                  <span class="skill-tag">Autodiscipline</span>
+                  <span class="skill-tag">Méthodologie</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">3 / 5</span>
+                <h4>🌍 Adaptabilité interculturelle et communication</h4>
+                <p>Élevé entre la France et la Russie, avec des scolarités dans les deux pays (Gymnasium n°53 à Nijni Novgorod et lycées parisiens), j'ai développé une capacité naturelle à m'adapter à différents environnements culturels. Les déménagements fréquents m'ont appris à communiquer efficacement avec des personnes d'horizons variés.</p>
+                <div class="skill-tags" style="margin-top:0.8rem;">
+                  <span class="skill-tag">Bilingue FR / RU</span>
+                  <span class="skill-tag">Communication interculturelle</span>
+                  <span class="skill-tag">Adaptabilité</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">4 / 5</span>
+                <h4>🤝 Esprit d'équipe et leadership</h4>
+                <p>Fondateur d'un club d'arts martiaux au lycée, j'ai su mobiliser et encadrer des groupes. Mon expérience d'aide aux entraînements d'enfants (2019–2021) a renforcé mes compétences en pédagogie et autorité bienveillante. Dans le cadre du projet de jeu vidéo multijoueur à EPITA (équipe de 4 développeurs), j'ai démontré ma capacité à collaborer efficacement sur un projet technique complexe.</p>
+                <div class="skill-tags" style="margin-top:0.8rem;">
+                  <span class="skill-tag">Leadership</span>
+                  <span class="skill-tag">Travail en équipe</span>
+                  <span class="skill-tag">Pédagogie</span>
+                </div>
+              </div></div>
+
+              <div class="project-slide"><div class="project-card">
+                <span class="project-counter">5 / 5</span>
+                <h4>💡 Créativité et résolution de problèmes</h4>
+                <p>Mon parcours biculturel m'a offert une perspective unique pour aborder les problèmes sous différents angles. Que ce soit dans le développement de projets informatiques (Python, C, Rust, C#) ou dans la restauration du patrimoine, j'adopte une approche créative et non conventionnelle. Cette capacité me permet de trouver des solutions innovantes face à des problèmes techniques complexes.</p>
+                <div class="skill-tags" style="margin-top:0.8rem;">
+                  <span class="skill-tag">Créativité</span>
+                  <span class="skill-tag">Problem solving</span>
+                  <span class="skill-tag">Pensée critique</span>
+                </div>
+              </div></div>
+
+            </div>
           </div>
-
-          <button class="accordion-btn">Discipline et rigueur personnelle</button>
-          <div class="accordion-panel">
-            <p>La pratique intensive du sport de haut niveau m'a inculqué une discipline rigoureuse : entraînements réguliers, respect des programmes, gestion stricte de l'alimentation pour les compétitions. Cette même rigueur s'applique à mes études à EPITA et au développement de projets informatiques, où la persévérance et la méthodologie sont essentielles.</p>
-          </div>
-
-          <button class="accordion-btn">Adaptabilité interculturelle et communication</button>
-          <div class="accordion-panel">
-            <p>Élevé entre la France et la Russie, avec des scolarités dans les deux pays (Gymnasium n°53 à Nijni Novgorod et lycées parisiens), j'ai développé une capacité naturelle à m'adapter à différents environnements culturels. Les déménagements fréquents m'ont appris à communiquer efficacement avec des personnes d'horizons variés. Cette compétence biculturelle est un atout majeur dans les projets internationaux.</p>
-          </div>
-
-          <button class="accordion-btn">Esprit d'équipe et leadership</button>
-          <div class="accordion-panel">
-            <p>Fondateur d'un club d'arts martiaux au lycée, j'ai su mobiliser et encadrer des groupes. Mon expérience d'aide aux entraînements d'enfants (2019–2021) a renforcé mes compétences en pédagogie et autorité bienveillante. Dans le cadre du projet de jeu vidéo multijoueur à EPITA (équipe de 4 développeurs), j'ai démontré ma capacité à collaborer efficacement sur un projet technique complexe.</p>
-          </div>
-
-          <button class="accordion-btn">Créativité et résolution de problèmes</button>
-          <div class="accordion-panel">
-            <p>Mon parcours biculturel m'a offert une perspective unique pour aborder les problèmes sous différents angles. Que ce soit dans le développement de projets informatiques (Python, C, Rust, C#) ou dans la restauration du patrimoine, j'adopte une approche créative et non conventionnelle. Cette capacité me permet de trouver des solutions innovantes face à des problèmes techniques complexes.</p>
-          </div>
-
+          <button class="carousel-btn" id="skillsNextBtn" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="carousel-dots" id="skillsDots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+          <button class="carousel-dot" data-index="3"></button>
+          <button class="carousel-dot" data-index="4"></button>
         </div>
       </div>
     </div>
   </section>
+  <!-- ============ END SKILLS ============ -->
 
 </main>
 
 <script>
+// Nav active link
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', function(){
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -480,22 +526,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-document.querySelectorAll('.accordion-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    let panel = this.nextElementSibling;
-    let isActive = panel.classList.contains('open');
-    document.querySelectorAll('.accordion-panel').forEach(p => {
-      p.classList.remove('open'); p.style.maxHeight = null;
-    });
-    document.querySelectorAll('.accordion-btn').forEach(b => b.classList.remove('active'));
-    if (!isActive) {
-      this.classList.add('active');
-      panel.classList.add('open');
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
-});
-
+// Contact dropdown
 const contactBtn = document.getElementById('contactToggleBtn');
 const contactPanel = document.getElementById('contactPanel');
 contactBtn.addEventListener('click', function(e) {
@@ -507,6 +538,62 @@ document.addEventListener('click', function(e) {
     contactPanel.classList.remove('open');
   }
 });
+
+// ===================== CAROUSEL FACTORY =====================
+function makeCarousel(trackId, dotsSelector, prevId, nextId, total) {
+  const track = document.getElementById(trackId);
+  const dots = document.querySelectorAll(dotsSelector);
+  let current = 0, animating = false;
+
+  function goTo(i) {
+    if (animating) return;
+    animating = true;
+    if (i < 0) i = total - 1;
+    if (i >= total) i = 0;
+    current = i;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+    setTimeout(() => { animating = false; }, 460);
+  }
+
+  document.getElementById(prevId).addEventListener('click', () => goTo(current - 1));
+  document.getElementById(nextId).addEventListener('click', () => goTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
+
+  let tx = 0;
+  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  }, {passive: true});
+}
+
+// Projets
+makeCarousel('carouselTrack', '#carouselDots .carousel-dot', 'prevBtn', 'nextBtn', 5);
+
+// Expériences
+makeCarousel('expTrack', '#expDots .carousel-dot', 'expPrevBtn', 'expNextBtn', 4);
+
+// Soft Skills
+makeCarousel('skillsTrack', '#skillsDots .carousel-dot', 'skillsPrevBtn', 'skillsNextBtn', 5);
+
+// Keyboard arrows — controls whichever carousel is in viewport
+document.addEventListener('keydown', e => {
+  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+  const dir = e.key === 'ArrowLeft' ? -1 : 1;
+  const carousels = [
+    { el: document.getElementById('carouselTrack'), btn: dir < 0 ? 'prevBtn' : 'nextBtn' },
+    { el: document.getElementById('expTrack'),      btn: dir < 0 ? 'expPrevBtn' : 'expNextBtn' },
+    { el: document.getElementById('skillsTrack'),   btn: dir < 0 ? 'skillsPrevBtn' : 'skillsNextBtn' },
+  ];
+  for (const c of carousels) {
+    const rect = c.el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      document.getElementById(c.btn).click(); break;
+    }
+  }
+});
+// ==================== END CAROUSELS ====================
 </script>
 </body>
 </html>
