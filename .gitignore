@@ -1,0 +1,8 @@
+# Fichiers d'IDE
+.idea/
+
+# Copie de la photo a la racine, utilisee seulement pour regenerer le CV
+/valere.jpg
+
+# Notes de travail locales, hors depot public
+CLAUDE.md

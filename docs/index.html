@@ -3,597 +3,701 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valère Damée - Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<title>Valère Damée — Développeur backend Python | Portfolio</title>
+<meta name="description" content="Valère Damée, étudiant ingénieur à EPITA. Développeur backend Python : conception, développement et mise en production de valtip.fr, plateforme de pourboires pour la restauration.">
+<meta name="author" content="Valère Damée">
+<meta property="og:title" content="Valère Damée — Développeur backend Python">
+<meta property="og:description" content="Étudiant ingénieur EPITA. J'ai conçu, développé et mis en production valtip.fr, une plateforme de pourboires pour la restauration.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
 <style>
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #121212 0%, #1e1e1e 50%, #2a2a2a 100%);
-  color: #e5e5e5; line-height: 1.6; min-height: 100vh; margin: 0;
+:root{
+  --bg:#0e0e10;
+  --bg-2:#141417;
+  --surface:rgba(255,255,255,.035);
+  --line:rgba(200,168,107,.16);
+  --line-strong:rgba(200,168,107,.4);
+  --gold:#c8a86b;
+  --gold-soft:#e0c48c;
+  --text:#e8e6e3;
+  --muted:#a3a09b;
+  --radius:14px;
+  --maxw:1060px;
 }
-.header {
-  position: fixed; top: 0; width: 100%;
-  background: rgba(20,20,20,0.95);
-  border-bottom: 1px solid rgba(200,168,107,0.15);
-  backdrop-filter: blur(12px); z-index: 1000; padding: 1rem 0;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:88px}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:'Inter','Segoe UI',system-ui,sans-serif;
+  font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
 }
-.navbar {
-  max-width: 1200px; margin: 0 auto; display: flex;
-  justify-content: space-between; align-items: center; padding: 0 2rem;
+/* Halo discret en haut de page, sans image de fond */
+body::before{
+  content:""; position:fixed; inset:0 0 auto 0; height:520px; pointer-events:none; z-index:0;
+  background:radial-gradient(900px 420px at 20% -10%, rgba(200,168,107,.10), transparent 70%);
 }
-.nav-brand h2 {
-  font-size: 1.8rem;
-  background: linear-gradient(45deg, #c8a86b, #e0c48c);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-.nav-menu { display: flex; list-style: none; gap: 2rem; margin: 0; padding: 0;}
-.nav-link { color: #ccc; text-decoration: none; font-weight: 500; transition: all 0.3s;}
-.nav-link:hover, .nav-link.active { color: #c8a86b;}
-.main { padding-top: 90px;}
-.section { padding: 4rem 0; display: flex; justify-content: center;}
-.container { max-width: 1000px; width: 100%; padding: 0 2rem;}
-.profile-card {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(200,168,107,0.2);
-  border-radius: 20px; padding: 3rem; backdrop-filter: blur(10px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4); max-width: 800px; margin: 0 auto; text-align: center;
-}
-.profile-photo {
-  width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
-  border: 3px solid #c8a86b; margin-bottom: 1.5rem;
-}
-.profile-info h1 { font-size: 3rem; color: #fff; margin-bottom: 0.5rem;}
-.profile-info h2 { font-size: 1.4rem; color: #c8a86b; margin-bottom: 1rem; font-weight: 500;}
-.profile-description { color: #bbb; font-size: 1.1rem; margin-bottom: 2rem;}
-.contact-section {
-  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
-  margin-top: 2rem; flex-wrap: wrap;
-}
-.social-links { display: flex; gap: 1rem;}
-.social-links a {
-  width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
-  background: rgba(200,168,107,0.1); color: #c8a86b; border: 2px solid rgba(200,168,107,0.2);
-  border-radius: 50%; transition: all 0.3s; text-decoration: none;
-}
-.social-links a:hover { background: #c8a86b; color: #222; transform: translateY(-3px);}
-.btn {
-  padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 500;
-  transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;
-  border: none; cursor: pointer; font-family: 'Segoe UI', sans-serif; font-size: 1rem;
-}
-.btn-primary { background: linear-gradient(45deg, #c8a86b, #a58955); color: #fff;}
-.btn-primary:hover { box-shadow: 0 8px 25px rgba(200,168,107,0.3); transform: translateY(-2px);}
-.section-title {
-  text-align: center; font-size: 2.5rem; margin-bottom: 2.5rem; color: #fff;
-  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-}
-.content-section {
-  background: rgba(255,255,255,0.03); border-radius: 15px; padding: 2rem;
-  margin-bottom: 2rem; border: 1px solid rgba(200,168,107,0.1);
-}
-.content-section h3 {
-  color: #c8a86b; font-size: 1.3rem; margin-bottom: 1.2rem;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.skills-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem; margin: 1.5rem 0;
-}
-.skill-category {
-  background: rgba(200,168,107,0.05); padding: 1.5rem; border-radius: 10px;
-  border: 1px solid rgba(200,168,107,0.15);
-}
-.skill-category h4 { color: #c8a86b; margin-bottom: 1rem; font-size: 1.1rem;}
-.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem;}
-.skill-tag {
-  background: rgba(200,168,107,0.15); color: #e5e5e5;
-  padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.9rem;
-  border: 1px solid rgba(200,168,107,0.25); transition: all 0.3s;
-}
-.skill-tag:hover { background: rgba(200,168,107,0.25); border-color: #c8a86b;}
-.formation-item {
-  background: rgba(200,168,107,0.04); padding: 1.5rem; border-radius: 10px;
-  margin-bottom: 1rem; border-left: 3px solid #c8a86b;
-}
-.formation-item h4 { color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;}
-.formation-meta { color: #c8a86b; font-size: 0.9rem; margin-bottom: 0.8rem;}
-.formation-item p { color: #bbb; line-height: 1.6;}
-.project-links { margin-top: 1rem; display: flex; gap: 0.8rem; flex-wrap: wrap;}
-.project-link {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem;
-  text-decoration: none; font-weight: 500; transition: all 0.3s;
-  background: rgba(200,168,107,0.12); color: #c8a86b;
-  border: 1px solid rgba(200,168,107,0.3);
-}
-.project-link:hover { background: #c8a86b; color: #222; transform: translateY(-2px);}
+a{color:var(--gold); text-decoration:none}
+a:hover{color:var(--gold-soft)}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:6px}
 
-/* Contact dropdown */
-.contact-dropdown-wrap { position: relative; display: inline-block; }
-.contact-panel {
-  position: absolute; top: calc(100% + 10px); left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  background: rgba(25,25,25,0.97); border: 1px solid rgba(200,168,107,0.35);
-  border-radius: 14px; padding: 0.8rem 1.2rem; min-width: 240px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(12px);
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 100; display: flex; flex-direction: column; gap: 0.6rem;
+/* ---------- Navigation ---------- */
+.header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(14,14,16,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.contact-panel.open { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-.contact-item {
-  display: flex; align-items: center; gap: 0.7rem; color: #e5e5e5;
-  text-decoration: none; padding: 0.5rem 0.7rem; border-radius: 8px;
-  transition: background 0.2s, color 0.2s; font-size: 0.95rem;
+.navbar{
+  max-width:var(--maxw); margin:0 auto; padding:.85rem 1.5rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
 }
-.contact-item i { color: #c8a86b; width: 16px; text-align: center; }
-.contact-item:hover { background: rgba(200,168,107,0.15); color: #c8a86b; }
+.brand{font-family:'Fraunces',Georgia,serif; font-size:1.2rem; color:var(--text)}
+.brand span{color:var(--gold)}
+.nav-menu{display:flex; gap:1.6rem; list-style:none; margin:0; padding:0; font-size:.93rem}
+.nav-link{color:var(--muted); font-weight:500; padding:.2rem 0; border-bottom:1px solid transparent}
+.nav-link:hover{color:var(--text)}
+.nav-link.active{color:var(--gold); border-bottom-color:var(--gold)}
 
-/* ===================== CAROUSEL ===================== */
-.projects-carousel-wrap {
-  position: relative; display: flex; align-items: center; gap: 0; overflow: hidden;
-}
-.carousel-btn {
-  flex-shrink: 0; width: 48px; height: 48px;
-  background: rgba(200,168,107,0.12); border: 2px solid rgba(200,168,107,0.35);
-  color: #c8a86b; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.25s, color 0.25s, transform 0.2s; z-index: 2; position: relative;
-}
-.carousel-btn:hover { background: #c8a86b; color: #222; transform: scale(1.1); }
-.carousel-viewport { flex: 1; overflow: hidden; }
-.carousel-track {
-  display: flex; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform;
-}
-.project-slide { min-width: 100%; box-sizing: border-box; padding: 0 1.5rem; }
-.project-card {
-  background: rgba(200,168,107,0.06); border: 1px solid rgba(200,168,107,0.2);
-  border-radius: 14px; padding: 2rem 2rem 1.5rem; position: relative;
-}
-.project-card .project-counter {
-  position: absolute; top: 1rem; right: 1.2rem; font-size: 0.8rem;
-  color: rgba(200,168,107,0.5); font-weight: 600; letter-spacing: 1px;
-}
-.project-card h4 { color: #fff; font-size: 1.2rem; margin: 0 0 0.8rem 0; padding-right: 3rem; }
-.project-card p { color: #bbb; line-height: 1.7; margin: 0 0 1rem 0; }
-.project-card ul { color: #bbb; padding-left: 1.2rem; line-height: 1.9; margin: 0.5rem 0 1rem 0; }
-.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 1.2rem; }
-.carousel-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: rgba(200,168,107,0.25);
-  border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; padding: 0;
-}
-.carousel-dot.active { background: #c8a86b; transform: scale(1.3); }
-/* ==================== END CAROUSEL ==================== */
+/* ---------- Structure ---------- */
+main{position:relative; z-index:1; padding-top:76px}
+.section{max-width:var(--maxw); margin:0 auto; padding:3.5rem 1.5rem}
+.section-title{font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:1.75rem; margin:0 0 .4rem; color:#fff}
+.section-lead{color:var(--muted); margin:0 0 2rem; max-width:62ch}
+.eyebrow{text-transform:uppercase; letter-spacing:.16em; font-size:.72rem; color:var(--gold); font-weight:600; margin:0 0 .6rem}
 
-@media (max-width:900px) {
-  .container, .content-section { padding: 15px;}
-  .profile-card { padding: 1.3rem;}
-  .section { padding: 1.5rem 0;}
-  .main { padding-top: 70px;}
-  .contact-section { flex-direction: column; gap: 1rem;}
-  .skills-grid { grid-template-columns: 1fr;}
-  .contact-panel { min-width: 200px;}
-  .carousel-btn { width: 38px; height: 38px; font-size: 1rem; }
-  .project-slide { padding: 0 0.5rem; }
+/* ---------- Accueil ---------- */
+.hero{display:grid; grid-template-columns:150px 1fr; gap:2.2rem; align-items:start; padding-top:4rem}
+.hero-photo{width:150px; height:150px; border-radius:50%; object-fit:cover; border:2px solid var(--line-strong); box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.hero h1{font-family:'Fraunces',Georgia,serif; font-size:2.6rem; line-height:1.15; margin:.2rem 0 .5rem; color:#fff}
+.hero .role{color:var(--gold); font-size:1.05rem; font-weight:600; margin:0 0 .9rem}
+.hero p.pitch{color:var(--muted); margin:0 0 1.6rem; max-width:60ch}
+.hero p.pitch strong{color:var(--text); font-weight:600}
+.actions{display:flex; flex-wrap:wrap; align-items:center; gap:.7rem}
+.btn{display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1.1rem; border-radius:999px;
+  font-size:.92rem; font-weight:600; border:1px solid var(--line-strong); transition:transform .2s, background .2s, color .2s}
+.btn svg{width:16px; height:16px; fill:currentColor}
+.btn-primary{background:var(--gold); color:#17150f; border-color:var(--gold)}
+.btn-primary:hover{background:var(--gold-soft); color:#17150f; transform:translateY(-2px)}
+.btn-ghost{color:var(--gold); background:transparent}
+.btn-ghost:hover{background:rgba(200,168,107,.1); transform:translateY(-2px)}
+.icon-link{width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:50%; border:1px solid var(--line); color:var(--gold); transition:all .2s}
+.icon-link svg{width:18px; height:18px; fill:currentColor}
+.icon-link:hover{background:rgba(200,168,107,.12); transform:translateY(-2px)}
+
+/* ---------- Bandeau "en ce moment" ---------- */
+.now{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+.now div{background:var(--bg-2); padding:1.1rem 1.25rem}
+.now dt{font-size:.72rem; text-transform:uppercase; letter-spacing:.14em; color:var(--gold); font-weight:600; margin-bottom:.3rem}
+.now dd{margin:0; font-size:.95rem; color:var(--text)}
+.now dd small{display:block; color:var(--muted); font-size:.85rem; margin-top:.15rem}
+
+/* ---------- Cartes ---------- */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:1.6rem; display:flex; flex-direction:column; transition:border-color .25s, transform .25s}
+.card:hover{border-color:var(--line-strong); transform:translateY(-3px)}
+.card.featured{grid-column:1/-1; background:linear-gradient(160deg, rgba(200,168,107,.09), rgba(255,255,255,.02))}
+.card h3{margin:0 0 .15rem; font-size:1.2rem; color:#fff; font-weight:600}
+.card .meta{color:var(--gold); font-size:.85rem; margin:0 0 .9rem}
+.card p{color:var(--muted); margin:0 0 1rem}
+.card p:last-of-type{margin-bottom:1.2rem}
+.card .card-foot{margin-top:auto}
+.tags{display:flex; flex-wrap:wrap; gap:.4rem}
+.tag{font-size:.78rem; padding:.25rem .7rem; border-radius:999px;
+  background:rgba(200,168,107,.1); border:1px solid var(--line); color:#d8d4cd}
+
+/* ---------- Competences ---------- */
+.skill-group{margin-bottom:1.4rem}
+.skill-group:last-child{margin-bottom:0}
+.skill-group h4{margin:0 0 .55rem; font-size:.95rem; color:var(--text); font-weight:600}
+
+/* ---------- Chronologie ---------- */
+.timeline{border-left:1px solid var(--line); margin-left:.4rem; padding-left:1.6rem}
+.tl-item{position:relative; padding-bottom:1.8rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:""; position:absolute; left:calc(-1.6rem - 5px); top:.55rem;
+  width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px var(--bg)}
+.tl-item h4{margin:0; font-size:1.02rem; color:#fff; font-weight:600}
+.tl-item .when{color:var(--gold); font-size:.85rem; margin:.1rem 0 .5rem}
+.tl-item p{margin:0 0 .5rem; color:var(--muted); font-size:.95rem}
+.tl-item ul{margin:.2rem 0 .5rem; padding-left:1.1rem; color:var(--muted); font-size:.95rem}
+.tl-item li{margin-bottom:.2rem}
+
+/* ---------- Accordeon ---------- */
+.acc-item{border-bottom:1px solid rgba(255,255,255,.07)}
+.acc-btn{width:100%; text-align:left; background:none; border:0; cursor:pointer; color:var(--text);
+  font:600 1rem/1.5 'Inter',sans-serif; padding:1rem 2rem 1rem 0; position:relative; transition:color .2s}
+.acc-btn:hover{color:var(--gold)}
+.acc-btn::after{content:""; position:absolute; right:.4rem; top:1.35rem; width:9px; height:9px;
+  border-right:2px solid var(--gold); border-bottom:2px solid var(--gold); transform:rotate(45deg); transition:transform .25s}
+.acc-btn[aria-expanded="true"]::after{transform:rotate(-135deg)}
+.acc-panel{max-height:0; overflow:hidden; transition:max-height .3s ease}
+.acc-panel p{margin:0 0 .8rem; color:var(--muted); max-width:75ch}
+.acc-panel .tags{margin-bottom:1.1rem}
+
+/* ---------- Langues et pied de page ---------- */
+.lang-row{display:flex; flex-wrap:wrap; gap:.6rem}
+.lang{border:1px solid var(--line); border-radius:var(--radius); padding:.7rem 1.1rem;
+  background:var(--surface); font-size:.95rem}
+.lang b{display:block; color:#fff; font-weight:600}
+.lang span{color:var(--muted); font-size:.85rem}
+/* ---------- Liste de contacts ---------- */
+.contact-list{list-style:none; margin:0 0 1.6rem; padding:0; display:grid; gap:.6rem; max-width:520px}
+.contact-list li{
+  display:flex; align-items:center; gap:.9rem; flex-wrap:wrap;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:.7rem 1rem;
+}
+.contact-label{
+  font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted);
+  font-weight:600; min-width:6.5rem;
+}
+.contact-list a{font-size:1rem; font-weight:600; word-break:break-all}
+.copy{
+  margin-left:auto; cursor:pointer; font:600 .8rem/1 'Inter',sans-serif;
+  color:var(--gold); background:transparent; border:1px solid var(--line);
+  border-radius:999px; padding:.4rem .8rem; transition:background .2s, color .2s;
+}
+.copy:hover{background:rgba(200,168,107,.12)}
+.copy.done{color:#8fd39a; border-color:rgba(143,211,154,.4)}
+
+footer{border-top:1px solid rgba(255,255,255,.07); margin-top:2rem;
+  padding:2.5rem 1.5rem 3rem; text-align:center; color:var(--muted); font-size:.9rem}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr; text-align:center; gap:1.4rem; padding-top:2.5rem}
+  .hero-photo{margin:0 auto}
+  .hero h1{font-size:2.1rem}
+  .hero p.pitch{margin-left:auto; margin-right:auto}
+  .actions{justify-content:center}
+  .now{grid-template-columns:1fr}
+  .nav-menu{display:none}
+  .section{padding:2.5rem 1.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; scroll-behavior:auto !important}
 }
 </style>
 </head>
 <body>
 
 <header class="header">
-  <nav class="navbar">
-    <div class="nav-brand"><h2>Valère Damée</h2></div>
+  <nav class="navbar" aria-label="Navigation principale">
+    <a class="brand" href="#accueil">Valère <span>Damée</span></a>
     <ul class="nav-menu">
-      <li><a href="#home" class="nav-link active">Accueil</a></li>
-      <li><a href="#formation" class="nav-link">Formation</a></li>
+      <li><a href="#projets" class="nav-link">Projets</a></li>
       <li><a href="#competences" class="nav-link">Compétences</a></li>
-      <li><a href="#exp" class="nav-link">Expérience</a></li>
-      <li><a href="#skills" class="nav-link">Soft Skills</a></li>
+      <li><a href="#parcours" class="nav-link">Parcours</a></li>
+      <li><a href="#experiences" class="nav-link">Expériences</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<main class="main">
+<main>
 
-  <section id="home" class="section">
-    <div class="container">
-      <div class="profile-card">
-        <img src="valere.jpg" alt="Valère Damée" class="profile-photo">
-        <div class="profile-info">
-          <h1>Valère Damée</h1>
-          <h2>Étudiant Ingénieur Informatique</h2>
-          <p class="profile-description">
-            Étudiant en 2e année à EPITA, passionné d'informatique et d'arts martiaux.<br>
-            Développeur curieux, rigoureux et orienté vers la collaboration.
-          </p>
-          <div class="contact-section">
-            <div class="contact-dropdown-wrap">
-              <button class="btn btn-primary contact-toggle-btn" id="contactToggleBtn">
-                <i class="fas fa-envelope"></i> Me contacter
-              </button>
-              <div class="contact-panel" id="contactPanel">
-                <a class="contact-item" >
-                  <i class="fas fa-envelope"></i><span>valda.d234@gmail.com</span>
-                </a>
-                <a class="contact-item" >
-                  <i class="fas fa-phone"></i><span>+33 6 41 91 86 42</span>
-                </a>
-              </div>
-            </div>
-            <div class="social-links">
-              <a href="https://github.com/valdadamva" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-              <a href="https://www.youtube.com/@ValereDamee" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="langues" class="section" style="padding: 2rem 0;">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-language"></i> Langues</h2>
-      <div class="content-section">
-        <div class="skills-grid">
-          <div class="skill-category">
-            <div class="skill-tags">
-              <span class="skill-tag">🇷🇺 Russe — Langue maternelle</span>
-              <span class="skill-tag">🇫🇷 Français — Courant</span>
-              <span class="skill-tag">🇬🇧 Anglais — Intermédiaire (préparation TOEIC 800+)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="formation" class="section">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formation</h2>
-      <div class="content-section">
-        <div class="formation-item">
-          <h4>EPITA — École d'Ingénieurs en Informatique, Paris</h4>
-          <div class="formation-meta">2024 – 2029 • Diplôme d'ingénieur en informatique (5 ans)</div>
-          <p>Structures de données, Algorithmique, Programmation orientée objet, Sécurité réseau, Bases de données, Mathématiques appliquées (algèbre linéaire, analyse, statistiques).</p>
-          <div style="margin-top: 0.8rem;"><span class="skill-tag">2ème année — En cours</span></div>
-        </div>
-        <div class="formation-item">
-          <h4>Lycée Colbert, Paris X</h4>
-          <div class="formation-meta">2022 – 2024 • Terminale générale</div>
-          <p>Spécialités : Mathématiques, NSI (Numérique et Sciences Informatiques), Mathématiques expertes.</p>
-        </div>
-        <div class="formation-item">
-          <h4>Gymnasium n°53, Nijni Novgorod, Russie</h4>
-          <div class="formation-meta">2019 – 2022</div>
-          <p>Formation internationale en Russie, parcours scientifique.</p>
-        </div>
-      </div>
-      <div class="content-section" style="text-align:center;">
-        <a href="Cv.pdf" class="btn btn-primary" download>
-          <i class="fas fa-file-download"></i> Télécharger le CV (PDF)
+  <!-- ACCUEIL -->
+  <section id="accueil" class="section hero">
+    <img src="valere.jpg" alt="Portrait de Valère Damée" class="hero-photo" width="150" height="150">
+    <div>
+      <p class="eyebrow">Paris · EPITA promo 2029</p>
+      <h1>Valère Damée</h1>
+      <p class="role">Étudiant ingénieur — développement backend Python</p>
+      <p class="pitch">
+        J'ai conçu, développé et mis en production <strong>valtip.fr</strong>, une plateforme de
+        pourboires pour la restauration : de la première ligne de code au serveur en ligne, seul.
+        En parallèle, je suis <strong>responsable technique à temps partiel</strong> chez Phytoconseil,
+        où je construis et documente les outils métier d'une entreprise d'expertise arboricole.
+      </p>
+      <div class="actions">
+        <a href="#contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Me contacter
+        </a>
+        <a href="Cv.pdf" class="btn btn-ghost" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.6l3.3-3.3 1.4 1.4L12 17.4l-4.7-5.7 1.4-1.4L12 13.6V3zM5 19h14v2H5z"/></svg>
+          Télécharger le CV
+        </a>
+        <a href="https://github.com/valdadamva" target="_blank" rel="noopener" class="icon-link" title="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C17.6 4.9 18.6 5.2 18.6 5.2c.6 1.7.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+        </a>
+        <a href="https://valtip.fr" target="_blank" rel="noopener" class="icon-link" title="valtip.fr" aria-label="Site valtip.fr">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-2.9a15.6 15.6 0 0 0-1.3-3.7A8 8 0 0 1 18.9 8zM12 4.1c.7 1 1.3 2.3 1.7 3.9h-3.4c.4-1.6 1-2.9 1.7-3.9zM4.3 14a8 8 0 0 1 0-4h3.3a17 17 0 0 0 0 4H4.3zm.8 2h2.9c.3 1.4.8 2.6 1.3 3.7A8 8 0 0 1 5.1 16zm2.9-8H5.1a8 8 0 0 1 4.2-3.7C8.8 5.4 8.3 6.6 8 8zM12 19.9c-.7-1-1.3-2.3-1.7-3.9h3.4c-.4 1.6-1 2.9-1.7 3.9zm2.1-5.9H9.9a15 15 0 0 1 0-4h4.2a15 15 0 0 1 0 4zm.6 5.7c.5-1.1 1-2.3 1.3-3.7h2.9a8 8 0 0 1-4.2 3.7zm1.7-5.7a17 17 0 0 0 0-4h3.3a8 8 0 0 1 0 4h-3.3z"/></svg>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- EN CE MOMENT -->
+  <section class="section" style="padding-top:1rem" aria-label="Situation actuelle">
+    <dl class="now">
+      <div>
+        <dt>Formation</dt>
+        <dd>3<sup>e</sup> année à EPITA<small>Cycle préparatoire terminé, spécialisation à choisir</small></dd>
+      </div>
+      <div>
+        <dt>Produit</dt>
+        <dd>valtip.fr en production<small>Développé et exploité seul depuis 2026</small></dd>
+      </div>
+      <div>
+        <dt>Poste</dt>
+        <dd>Responsable technique<small>Phytoconseil, à temps partiel</small></dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets" class="section">
+    <p class="eyebrow">Ce que je construis</p>
+    <h2 class="section-title">Projets</h2>
+    <p class="section-lead">Du service en production aux projets d'école menés en équipe.</p>
+
+    <div class="cards">
+
+      <article class="card featured">
+        <h3>valtip — plateforme de pourboires pour la restauration</h3>
+        <p class="meta">2026 · projet personnel, en production · <a href="https://valtip.fr" target="_blank" rel="noopener">valtip.fr</a></p>
+        <p>
+          Un client scanne un QR code sur la table, laisse un pourboire en quelques secondes, et le
+          montant est reversé à l'établissement pour l'ensemble de l'équipe. J'ai tout porté seul :
+          la conception, le développement, l'intégration des paiements, la mise en production et
+          l'exploitation quotidienne du service.
+        </p>
+        <p>
+          C'est le projet qui m'a appris ce qu'on n'apprend pas en cours : concevoir un flux de
+          paiement correct, tenir un service en ligne et assumer ses bugs en production.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">HTMX</span>
+            <span class="tag">PostgreSQL</span><span class="tag">Stripe Connect</span><span class="tag">Docker</span>
+            <span class="tag">GitHub Actions</span><span class="tag">Linux / VPS OVH</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Reconnaissance de lettres par réseau de neurones</h3>
+        <p class="meta">Projet EPITA · en C, sans bibliothèque</p>
+        <p>
+          Réseau de neurones implémenté entièrement à la main en C pour reconnaître des lettres sur
+          des images 32×32 : prétraitement, augmentation de données (bruit, rotations), entraînement
+          et évaluation de la précision.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">C</span><span class="tag">Machine learning</span>
+            <span class="tag">Traitement d'images</span><span class="tag">Algorithmique</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Jeu vidéo multijoueur</h3>
+        <p class="meta">Projet annuel EPITA · équipe de 4</p>
+        <p>
+          Développement complet d'un jeu avec fonctionnalités multijoueur en réseau : logique de jeu,
+          interactions entre joueurs, interface, et gestion du versioning à quatre sur toute l'année.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">C#</span><span class="tag">Unity</span><span class="tag">Réseau</span>
+            <span class="tag">Travail en équipe</span><span class="tag">Git</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Application de réalité augmentée</h3>
+        <p class="meta">Projet EPITA · équipe de 2</p>
+        <p>
+          Application de réalité augmentée ciblant les appareils Samsung : intégration d'éléments
+          virtuels dans l'environnement réel, travail sur l'expérience utilisateur et contraintes
+          multiplateformes.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">C#</span><span class="tag">Réalité augmentée</span>
+            <span class="tag">SDK Samsung</span><span class="tag">Mobile</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Éditeur de dessin type Paint</h3>
+        <p class="meta">Projet EPITA · en Rust</p>
+        <p>
+          Recréation d'un éditeur de dessin : interface graphique, outils (crayon, gomme, formes,
+          couleurs) et sauvegarde des images. Beaucoup de programmation système et de gestion
+          mémoire bas niveau.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">Rust</span><span class="tag">Programmation système</span>
+            <span class="tag">Interface graphique</span><span class="tag">Gestion mémoire</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Outillage terrain — Phytoconseil</h3>
+        <p class="meta">En cours · contexte professionnel</p>
+        <p>
+          Chaîne de relevé de terrain hors ligne pour l'expertise d'arbres : configuration
+          QGIS / QField, export vers Excel, et scripts Python d'extraction des courbes de
+          résistographe depuis des PDF vectoriels vers des schémas de synthèse exploitables.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">PyQGIS</span><span class="tag">QGIS / QField</span>
+            <span class="tag">PyMuPDF</span><span class="tag">Documentation FR</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Configurateur de PC</h3>
+        <p class="meta">Projet personnel</p>
+        <p>
+          Application de bureau permettant d'assembler une configuration matérielle cohérente,
+          construite autour d'une architecture orientée objet et d'une interface graphique Flet.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Flet</span><span class="tag">POO</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Générateur de QR codes</h3>
+        <p class="meta">Projet personnel</p>
+        <p>
+          Outil en ligne de commande pour générer et lire des QR codes à partir d'URL, de texte ou
+          de données personnalisées : manipulation d'images et export de fichiers.
+        </p>
+        <div class="card-foot">
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Traitement d'images</span>
+            <span class="tag">CLI</span><span class="tag">Automatisation</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- COMPETENCES -->
   <section id="competences" class="section">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-code"></i> Compétences &amp; Projets</h2>
-      <div class="skills-grid">
-        <div class="content-section">
-          <h3><i class="fas fa-code"></i> Langages de programmation</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span><span class="skill-tag">Rust</span>
-            <span class="skill-tag">C</span><span class="skill-tag">C#</span>
-            <span class="skill-tag">OCaml</span><span class="skill-tag">Matlab</span>
-            <span class="skill-tag">Pascal</span><span class="skill-tag">SQL</span>
+    <p class="eyebrow">Outils</p>
+    <h2 class="section-title">Compétences techniques</h2>
+    <p class="section-lead">Ce que j'utilise réellement, classé par usage plutôt que par ancienneté.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="skill-group">
+          <h4>Langages</h4>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">C</span><span class="tag">Rust</span>
+            <span class="tag">C#</span><span class="tag">OCaml</span><span class="tag">SQL</span>
+            <span class="tag">Matlab</span>
           </div>
         </div>
-        <div class="content-section">
-          <h3><i class="fas fa-tools"></i> Outils &amp; Technologies</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
-            <span class="skill-tag">GitLab</span><span class="skill-tag">Docker</span>
-            <span class="skill-tag">Linux</span><span class="skill-tag">Unity</span>
-            <span class="skill-tag">Blender</span><span class="skill-tag">VS Code</span>
+        <div class="skill-group">
+          <h4>Back-end &amp; web</h4>
+          <div class="tags">
+            <span class="tag">FastAPI</span><span class="tag">HTMX</span><span class="tag">PostgreSQL</span>
+            <span class="tag">API Stripe Connect</span><span class="tag">HTML / CSS</span>
           </div>
         </div>
       </div>
 
-      <!--  PROJETS -->
-      <div class="content-section">
-        <h3><i class="fas fa-project-diagram"></i> Projets Significatifs</h3>
-        <div class="projects-carousel-wrap">
-          <button class="carousel-btn" id="prevBtn" aria-label="Projet précédent"><i class="fas fa-chevron-left"></i></button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" id="carouselTrack">
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">1 / 5</span>
-                <h4>🎮 Jeu vidéo multijoueur — C# / Unity</h4>
-                <p>Développement complet d'un jeu vidéo avec fonctionnalités multijoueur en réseau, gestion de la logique de jeu, des interactions entre joueurs et d'une interface utilisateur. Réalisation en équipe de 4 développeurs avec gestion du versioning via Git.</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">C#</span><span class="skill-tag">Unity</span>
-                  <span class="skill-tag">Réseau / Multijoueur</span><span class="skill-tag">Travail en équipe</span><span class="skill-tag">Git</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">2 / 5</span>
-                <h4>📱 Application de réalité augmentée — C#</h4>
-                <p>Conception et développement d'une application de réalité augmentée ciblant les appareils Samsung. Intégration d'éléments virtuels dans l'environnement réel, travail sur l'expérience utilisateur et gestion multiplateforme. Projet réalisé en équipe de 2 développeurs.</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">C#</span><span class="skill-tag">Réalité augmentée</span>
-                  <span class="skill-tag">Samsung SDK</span><span class="skill-tag">Développement mobile</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">3 / 5</span>
-                <h4>🧠 Reconnaissance de lettres par ML — C</h4>
-                <p>Implémentation from scratch d'un réseau de neurones en C pour la reconnaissance de lettres à partir d'images (entrées 32×32). Prétraitement des images, augmentation de données (bruit, rotations), entraînement et évaluation de la précision du modèle.</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">C</span><span class="skill-tag">Machine Learning</span>
-                  <span class="skill-tag">Réseau de neurones</span><span class="skill-tag">Traitement d'images</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">4 / 5</span>
-                <h4>🎨 Application de dessin type "Paint" — Rust</h4>
-                <p>Recréation d'une application de dessin type Paint en Rust. Gestion de l'interface graphique, des outils de dessin (crayon, gomme, formes, couleurs) et de la sauvegarde de fichiers image. Mise en pratique de la programmation système et de la gestion mémoire bas niveau.</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Rust</span><span class="skill-tag">Programmation système</span>
-                  <span class="skill-tag">Interface graphique</span><span class="skill-tag">Gestion mémoire</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">5 / 5</span>
-                <h4>🔗 Générateur de QR Codes — Python</h4>
-                <p>Développement d'un outil Python permettant de générer et lire des QR codes à partir d'URLs, de textes ou de données personnalisées. Manipulation de bibliothèques de traitement d'images, export de fichiers et interface en ligne de commande.</p>
-                <div class="skill-tags">
-                  <span class="skill-tag">Python</span><span class="skill-tag">Traitement d'images</span>
-                  <span class="skill-tag">Automatisation</span><span class="skill-tag">CLI</span>
-                </div>
-              </div></div>
-
-            </div>
+      <div class="card">
+        <div class="skill-group">
+          <h4>Mise en production</h4>
+          <div class="tags">
+            <span class="tag">Docker &amp; Compose</span><span class="tag">GitHub Actions (CI/CD)</span>
+            <span class="tag">Linux</span><span class="tag">VPS OVH</span><span class="tag">DNS / TLS</span>
           </div>
-          <button class="carousel-btn" id="nextBtn" aria-label="Projet suivant"><i class="fas fa-chevron-right"></i></button>
         </div>
-        <div class="carousel-dots" id="carouselDots">
-          <button class="carousel-dot active" data-index="0"></button>
-          <button class="carousel-dot" data-index="1"></button>
-          <button class="carousel-dot" data-index="2"></button>
-          <button class="carousel-dot" data-index="3"></button>
-          <button class="carousel-dot" data-index="4"></button>
-        </div>
-      </div>
-      <!-- END  PROJETS -->
-
-    </div>
-  </section>
-
-  <!-- ============  EXP ============ -->
-  <section id="exp" class="section">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h2>
-      <div class="content-section">
-        <div class="projects-carousel-wrap">
-          <button class="carousel-btn" id="expPrevBtn" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" id="expTrack">
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">1 / 4</span>
-                <h4>🎉 Casa Trocadéro — Paris (Été 2025)</h4>
-                <p>Expérience polyvalente au sein d'un établissement événementiel parisien à fort volume, travaillant jusqu'à 14 heures par shift dans un environnement exigeant (musique forte, clientèle internationale). Missions principales :</p>
-                <ul>
-                  <li>Service en salle et débarrassage lors d'événements privés</li>
-                  <li>Approvisionnement du bar — préparation de cocktails et boissons</li>
-                  <li>Stand de confiseries (gaufres, crêpes, barbe à papa) avec encaissement</li>
-                  <li>Fermeture de service — inventaire, vérification des écarts de caisse</li>
-                </ul>
-                <p>Travail régulier de nuit (4h–5h du matin). Résistance au stress et communication interculturelle.</p>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">2 / 4</span>
-                <h4>🛶 Accueil clientèle — Club Canoë-Raid, Dordogne (2022)</h4>
-                <p>Accueil et orientation des clients français et internationaux dans un centre nautique en Dordogne. Gestion de la logistique quotidienne, organisation des activités et coordination des réservations.</p>
-                <p>Cette expérience m'a permis de développer mes compétences en service client, communication interculturelle et gestion de situations imprévues dans un environnement dynamique.</p>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">3 / 4</span>
-                <h4>🏛️ Restauration du patrimoine — Bretagne (2020–2021)</h4>
-                <p>Stage pratique auprès d'un maçon et d'un ébéniste spécialisés dans la restauration d'une demeure du XVIIIe siècle au Gros-Fœil. Participation aux travaux de conservation : maçonnerie traditionnelle, menuiserie d'art, techniques anciennes de restauration.</p>
-                <p>Cette expérience unique m'a enseigné la précision du travail manuel et l'importance de la patience dans la réalisation de projets complexes.</p>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">4 / 4</span>
-                <h4>🥋 Aide aux entraînements d'enfants (2019–2021)</h4>
-                <p>Encadrement et soutien pédagogique de jeunes sportifs lors des entraînements d'arts martiaux. Développement de compétences en transmission de connaissances, patience et autorité bienveillante.</p>
-                <p>Adaptation des méthodes d'enseignement selon l'âge et la personnalité de chaque enfant. Renforcement de la capacité à communiquer clairement et à gérer un groupe avec rigueur.</p>
-              </div></div>
-
-            </div>
+        <div class="skill-group">
+          <h4>Outils</h4>
+          <div class="tags">
+            <span class="tag">Git / GitHub</span><span class="tag">GitLab</span><span class="tag">QGIS</span>
+            <span class="tag">Unity</span><span class="tag">Blender</span><span class="tag">Excel</span>
           </div>
-          <button class="carousel-btn" id="expNextBtn" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
-        </div>
-        <div class="carousel-dots" id="expDots">
-          <button class="carousel-dot active" data-index="0"></button>
-          <button class="carousel-dot" data-index="1"></button>
-          <button class="carousel-dot" data-index="2"></button>
-          <button class="carousel-dot" data-index="3"></button>
         </div>
       </div>
     </div>
   </section>
-  <!-- ============ END EXP ============ -->
 
-  <!-- ============  SKILLS  ============ -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-lightbulb"></i> Soft Skills &amp; Compétences</h2>
-      <div class="content-section">
-        <div class="projects-carousel-wrap">
-          <button class="carousel-btn" id="skillsPrevBtn" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
-          <div class="carousel-viewport">
-            <div class="carousel-track" id="skillsTrack">
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">1 / 5</span>
-                <h4>💪 Résistance au stress et performance sous pression</h4>
-                <p>5 années d'arts martiaux (judo, MMA, muay-thaï) et participation à des compétitions nationales ont forgé une capacité exceptionnelle à gérer la pression. Candidat maître de sport en acrobatie sportive et course d'orientation, j'ai appris à maintenir ma concentration dans des situations à fort enjeu.</p>
-                <p>Cette expérience se transpose naturellement dans les projets académiques avec des délais serrés.</p>
-                <div class="skill-tags" style="margin-top:0.8rem;">
-                  <span class="skill-tag">Gestion du stress</span>
-                  <span class="skill-tag">Arts martiaux</span>
-                  <span class="skill-tag">Compétitions nationales</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">2 / 5</span>
-                <h4>📐 Discipline et rigueur personnelle</h4>
-                <p>La pratique intensive du sport de haut niveau m'a inculqué une discipline rigoureuse : entraînements réguliers, respect des programmes, gestion stricte de l'alimentation pour les compétitions. Cette même rigueur s'applique à mes études à EPITA et au développement de projets informatiques, où la persévérance et la méthodologie sont essentielles.</p>
-                <div class="skill-tags" style="margin-top:0.8rem;">
-                  <span class="skill-tag">Rigueur</span>
-                  <span class="skill-tag">Autodiscipline</span>
-                  <span class="skill-tag">Méthodologie</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">3 / 5</span>
-                <h4>🌍 Adaptabilité interculturelle et communication</h4>
-                <p>Élevé entre la France et la Russie, avec des scolarités dans les deux pays (Gymnasium n°53 à Nijni Novgorod et lycées parisiens), j'ai développé une capacité naturelle à m'adapter à différents environnements culturels. Les déménagements fréquents m'ont appris à communiquer efficacement avec des personnes d'horizons variés.</p>
-                <div class="skill-tags" style="margin-top:0.8rem;">
-                  <span class="skill-tag">Bilingue FR / RU</span>
-                  <span class="skill-tag">Communication interculturelle</span>
-                  <span class="skill-tag">Adaptabilité</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">4 / 5</span>
-                <h4>🤝 Esprit d'équipe et leadership</h4>
-                <p>Fondateur d'un club d'arts martiaux au lycée, j'ai su mobiliser et encadrer des groupes. Mon expérience d'aide aux entraînements d'enfants (2019–2021) a renforcé mes compétences en pédagogie et autorité bienveillante. Dans le cadre du projet de jeu vidéo multijoueur à EPITA (équipe de 4 développeurs), j'ai démontré ma capacité à collaborer efficacement sur un projet technique complexe.</p>
-                <div class="skill-tags" style="margin-top:0.8rem;">
-                  <span class="skill-tag">Leadership</span>
-                  <span class="skill-tag">Travail en équipe</span>
-                  <span class="skill-tag">Pédagogie</span>
-                </div>
-              </div></div>
-
-              <div class="project-slide"><div class="project-card">
-                <span class="project-counter">5 / 5</span>
-                <h4>💡 Créativité et résolution de problèmes</h4>
-                <p>Mon parcours biculturel m'a offert une perspective unique pour aborder les problèmes sous différents angles. Que ce soit dans le développement de projets informatiques (Python, C, Rust, C#) ou dans la restauration du patrimoine, j'adopte une approche créative et non conventionnelle. Cette capacité me permet de trouver des solutions innovantes face à des problèmes techniques complexes.</p>
-                <div class="skill-tags" style="margin-top:0.8rem;">
-                  <span class="skill-tag">Créativité</span>
-                  <span class="skill-tag">Problem solving</span>
-                  <span class="skill-tag">Pensée critique</span>
-                </div>
-              </div></div>
-
-            </div>
-          </div>
-          <button class="carousel-btn" id="skillsNextBtn" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+  <!-- PARCOURS -->
+  <section id="parcours" class="section">
+    <p class="eyebrow">Formation</p>
+    <h2 class="section-title">Parcours scolaire</h2>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item">
+          <h4>EPITA — École d'ingénieurs en informatique, Paris</h4>
+          <p class="when">2024 – 2029 · diplôme d'ingénieur (5 ans)</p>
+          <p>Cycle préparatoire terminé ; entrée en 3<sup>e</sup> année en septembre 2026, spécialisation à choisir.
+             Structures de données, algorithmique, programmation orientée objet, programmation système en C et en Rust,
+             bases de données, sécurité réseau, mathématiques appliquées.</p>
         </div>
-        <div class="carousel-dots" id="skillsDots">
-          <button class="carousel-dot active" data-index="0"></button>
-          <button class="carousel-dot" data-index="1"></button>
-          <button class="carousel-dot" data-index="2"></button>
-          <button class="carousel-dot" data-index="3"></button>
-          <button class="carousel-dot" data-index="4"></button>
+        <div class="tl-item">
+          <h4>Lycée Colbert, Paris X<sup>e</sup></h4>
+          <p class="when">2022 – 2024 · baccalauréat général</p>
+          <p>Spécialités mathématiques et NSI, option mathématiques expertes.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Gymnasium n°53, Nijni Novgorod, Russie</h4>
+          <p class="when">2019 – 2022 · parcours scientifique</p>
+          <p>Scolarité en Russie, en parallèle d'un parcours partagé entre les deux pays.</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- ============ END SKILLS ============ -->
+
+  <!-- EXPERIENCES -->
+  <section id="experiences" class="section">
+    <p class="eyebrow">Terrain</p>
+    <h2 class="section-title">Expériences</h2>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item">
+          <h4>Responsable technique — Phytoconseil, expertise arboricole</h4>
+          <p class="when">En cours · temps partiel</p>
+          <p>Reprise d'un poste laissé sans documentation : remise à plat de la chaîne de relevé de terrain,
+             automatisations Python, gestion de la messagerie professionnelle, et rédaction des procédures
+             en français pour une passation à une collègue non technicienne.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Fondateur et développeur — valtip</h4>
+          <p class="when">2026 · en cours</p>
+          <p>Création du service de A à Z : développement, mise en production, démarches de création
+             d'activité, référencement, et prospection auprès des restaurants parisiens.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Casa Trocadéro — Paris</h4>
+          <p class="when">Été 2025 · établissement événementiel</p>
+          <p>Poste polyvalent dans un établissement à fort volume, jusqu'à 14 heures par service, en
+             musique forte et avec une clientèle internationale :</p>
+          <ul>
+            <li>service en salle et débarrassage lors d'événements privés ;</li>
+            <li>approvisionnement du bar, préparation de cocktails et boissons ;</li>
+            <li>stand de confiseries avec encaissement ;</li>
+            <li>fermeture de service : inventaire et vérification des écarts de caisse.</li>
+          </ul>
+          <p>Travail régulier de nuit jusqu'à 4 h ou 5 h du matin. C'est aussi de là qu'est venue l'idée de valtip.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Accueil clientèle — Club Canoë-Raid, Dordogne</h4>
+          <p class="when">2022</p>
+          <p>Accueil et orientation de clients français et internationaux dans un centre nautique,
+             logistique quotidienne, organisation des activités et coordination des réservations.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Restauration du patrimoine — Le Gros-Fœil, Bretagne</h4>
+          <p class="when">2020 – 2021</p>
+          <p>Stage pratique auprès d'un maçon et d'un ébéniste sur la restauration d'une demeure du
+             XVIII<sup>e</sup> siècle : maçonnerie traditionnelle, menuiserie d'art, techniques anciennes.</p>
+        </div>
+        <div class="tl-item">
+          <h4>Aide aux entraînements d'enfants</h4>
+          <p class="when">2019 – 2021</p>
+          <p>Encadrement de jeunes sportifs en arts martiaux : adaptation des consignes selon l'âge et
+             la personnalité de chacun, tenue d'un groupe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITES -->
+  <section id="apropos" class="section">
+    <p class="eyebrow">Hors du code</p>
+    <h2 class="section-title">Ce que j'apporte dans une équipe</h2>
+    <div class="card">
+      <div class="accordion">
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">Aller au bout, y compris la partie ingrate</button>
+          <div class="acc-panel">
+            <p>Un projet n'est pas fini quand le code tourne sur ma machine. Pour valtip, il a fallu
+               choisir un hébergeur, écrire la chaîne de déploiement, acheter un domaine, gérer les
+               certificats, traiter les incidents en production et faire les démarches administratives.
+               J'ai appris cette partie-là parce que personne d'autre n'allait la faire.</p>
+            <div class="tags"><span class="tag">Autonomie</span><span class="tag">Mise en production</span><span class="tag">Persévérance</span></div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">Résistance à la pression</button>
+          <div class="acc-panel">
+            <p>Cinq années d'arts martiaux (judo, MMA, muay-thaï) et des compétitions nationales, avec
+               un niveau candidat maître du sport en acrobatie sportive et en course d'orientation.
+               On y apprend à rester lucide quand la situation se dégrade — ce qui sert autant en
+               compétition qu'un vendredi soir avec un service en ligne qui répond mal.</p>
+            <div class="tags"><span class="tag">Gestion du stress</span><span class="tag">Compétitions nationales</span></div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">Discipline et rigueur</button>
+          <div class="acc-panel">
+            <p>Le sport à ce niveau impose une discipline stricte : entraînements réguliers, respect
+               des programmes, gestion de l'alimentation avant les compétitions. La même méthode
+               s'applique aux études et au développement, où la régularité compte plus que l'inspiration.</p>
+            <div class="tags"><span class="tag">Rigueur</span><span class="tag">Autodiscipline</span><span class="tag">Méthode</span></div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">Adaptabilité interculturelle</button>
+          <div class="acc-panel">
+            <p>Élevé entre la France et la Russie, avec une scolarité dans les deux pays. Je travaille
+               indifféremment en français et en russe, je rédige de la documentation technique dans les
+               deux langues, et les déménagements fréquents m'ont appris à m'intégrer vite.</p>
+            <div class="tags"><span class="tag">Bilingue FR / RU</span><span class="tag">Adaptabilité</span></div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-btn" aria-expanded="false">Transmettre et documenter</button>
+          <div class="acc-panel">
+            <p>Fondateur d'un club d'arts martiaux au lycée, encadrant d'entraînements d'enfants, et
+               aujourd'hui chargé de rendre un outillage technique utilisable par une collègue non
+               technicienne. J'écris des procédures destinées à être suivies sans moi — c'est le
+               meilleur test de la clarté d'un système.</p>
+            <div class="tags"><span class="tag">Pédagogie</span><span class="tag">Documentation</span><span class="tag">Travail en équipe</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUES ET CONTACT -->
+  <section id="contact" class="section">
+    <p class="eyebrow">Écrivez-moi</p>
+    <h2 class="section-title">Contact</h2>
+    <h3 style="font-size:.95rem;font-weight:600;color:var(--muted);margin:0 0 .7rem">Langues de travail</h3>
+    <div class="lang-row" style="margin-bottom:2rem">
+      <div class="lang"><b>Russe</b><span>Langue maternelle</span></div>
+      <div class="lang"><b>Français</b><span>Courant — scolarité et travail</span></div>
+      <div class="lang"><b>Anglais</b><span>Intermédiaire — préparation TOEIC</span></div>
+    </div>
+    <p class="section-lead">
+      Je cherche un stage en développement backend. Le plus simple est de m'écrire directement —
+      je réponds à tout.
+    </p>
+
+    <ul class="contact-list">
+      <li>
+        <span class="contact-label">Professionnel</span>
+        <a href="mailto:contact@valtip.fr">contact@valtip.fr</a>
+        <button type="button" class="copy" data-copy="contact@valtip.fr">Copier</button>
+      </li>
+      <li>
+        <span class="contact-label">École</span>
+        <a href="mailto:valere.damee@epita.fr">valere.damee@epita.fr</a>
+        <button type="button" class="copy" data-copy="valere.damee@epita.fr">Copier</button>
+      </li>
+      <li>
+        <span class="contact-label">Téléphone</span>
+        <a href="tel:+33641918642">+33 6 41 91 86 42</a>
+        <button type="button" class="copy" data-copy="+33641918642">Copier</button>
+      </li>
+    </ul>
+
+    <div class="actions">
+      <a href="Cv.pdf" class="btn btn-primary" download>Télécharger le CV (PDF)</a>
+      <a href="https://github.com/valdadamva" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      <a href="https://valtip.fr" target="_blank" rel="noopener" class="btn btn-ghost">valtip.fr</a>
+    </div>
+  </section>
 
 </main>
 
+<footer>
+  <p>Valère Damée — Paris · <a href="https://valtip.fr" target="_blank" rel="noopener">valtip.fr</a></p>
+</footer>
+
 <script>
-// Nav active link
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', function(){
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
+// Accordeon : ouverture/fermeture avec hauteur calculee, etat expose via aria-expanded
+document.querySelectorAll('.acc-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var panel = btn.nextElementSibling;
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    panel.style.maxHeight = open ? null : panel.scrollHeight + 'px';
   });
 });
 
-// Contact dropdown
-const contactBtn = document.getElementById('contactToggleBtn');
-const contactPanel = document.getElementById('contactPanel');
-contactBtn.addEventListener('click', function(e) {
-  e.stopPropagation();
-  contactPanel.classList.toggle('open');
-});
-document.addEventListener('click', function(e) {
-  if (!contactBtn.contains(e.target) && !contactPanel.contains(e.target)) {
-    contactPanel.classList.remove('open');
-  }
+// Recalcul de la hauteur des panneaux ouverts apres un changement de largeur
+window.addEventListener('resize', function () {
+  document.querySelectorAll('.acc-btn[aria-expanded="true"]').forEach(function (btn) {
+    btn.nextElementSibling.style.maxHeight = btn.nextElementSibling.scrollHeight + 'px';
+  });
 });
 
-// ===================== CAROUSEL FACTORY =====================
-function makeCarousel(trackId, dotsSelector, prevId, nextId, total) {
-  const track = document.getElementById(trackId);
-  const dots = document.querySelectorAll(dotsSelector);
-  let current = 0, animating = false;
-
-  function goTo(i) {
-    if (animating) return;
-    animating = true;
-    if (i < 0) i = total - 1;
-    if (i >= total) i = 0;
-    current = i;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
-    setTimeout(() => { animating = false; }, 460);
+// Copie d'une adresse dans le presse-papier.
+// L'API moderne n'existe qu'en contexte securise ; sinon on retombe sur un textarea temporaire.
+function copierTexte(texte) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(texte);
   }
-
-  document.getElementById(prevId).addEventListener('click', () => goTo(current - 1));
-  document.getElementById(nextId).addEventListener('click', () => goTo(current + 1));
-  dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
-
-  let tx = 0;
-  track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive: true});
-  track.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
-  }, {passive: true});
+  return new Promise(function (resolve, reject) {
+    var zone = document.createElement('textarea');
+    zone.value = texte;
+    zone.setAttribute('readonly', '');
+    zone.style.position = 'fixed';
+    zone.style.opacity = '0';
+    document.body.appendChild(zone);
+    zone.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(zone);
+    ok ? resolve() : reject();
+  });
 }
 
-// Projets
-makeCarousel('carouselTrack', '#carouselDots .carousel-dot', 'prevBtn', 'nextBtn', 5);
-
-// Expériences
-makeCarousel('expTrack', '#expDots .carousel-dot', 'expPrevBtn', 'expNextBtn', 4);
-
-// Soft Skills
-makeCarousel('skillsTrack', '#skillsDots .carousel-dot', 'skillsPrevBtn', 'skillsNextBtn', 5);
-
-// Keyboard arrows — controls whichever carousel is in viewport
-document.addEventListener('keydown', e => {
-  if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-  const dir = e.key === 'ArrowLeft' ? -1 : 1;
-  const carousels = [
-    { el: document.getElementById('carouselTrack'), btn: dir < 0 ? 'prevBtn' : 'nextBtn' },
-    { el: document.getElementById('expTrack'),      btn: dir < 0 ? 'expPrevBtn' : 'expNextBtn' },
-    { el: document.getElementById('skillsTrack'),   btn: dir < 0 ? 'skillsPrevBtn' : 'skillsNextBtn' },
-  ];
-  for (const c of carousels) {
-    const rect = c.el.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      document.getElementById(c.btn).click(); break;
-    }
-  }
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var initial = btn.dataset.initial || (btn.dataset.initial = btn.textContent);
+    copierTexte(btn.dataset.copy).then(function () {
+      btn.textContent = 'Copié';
+      btn.classList.add('done');
+    }, function () {
+      btn.textContent = 'Échec';
+    });
+    setTimeout(function () {
+      btn.textContent = initial;
+      btn.classList.remove('done');
+    }, 1800);
+  });
 });
-// ==================== END CAROUSELS ====================
+
+// Surlignage du lien de navigation correspondant a la section visible
+var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+var targets = links
+  .map(function (l) { return document.querySelector(l.getAttribute('href')); })
+  .filter(Boolean);
+
+if ('IntersectionObserver' in window && targets.length) {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      links.forEach(function (l) {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + entry.target.id);
+      });
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  targets.forEach(function (t) { observer.observe(t); });
+}
 </script>
 </body>
 </html>
